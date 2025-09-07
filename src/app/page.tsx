@@ -21,7 +21,7 @@ export default function Home() {
   }
 
   return (
-    <div className="min-h-screen px-4 py-8">
+    <div className="min-h-screen px-4 py-8 passionate-scroll smooth-scroll">
       <ThemeToggle />
       
       <div className="max-w-6xl mx-auto">

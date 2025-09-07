@@ -99,7 +99,7 @@ export default function TaskList() {
   }
 
   return (
-    <div className="animate-slide-up">
+    <div className="animate-slide-up passionate-scroll smooth-scroll">
       {/* Stats Header */}
       <div className="bg-gradient-to-r from-frost-white to-slate-gray/5 dark:from-secondary-800/50 dark:to-secondary-900/50 rounded-2xl p-6 mb-8 border border-slate-gray/20 dark:border-secondary-700 shadow-modern dark:shadow-dark-modern">
         <div className="flex items-center justify-between mb-4">
