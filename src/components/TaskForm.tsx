@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useState } from 'react'
-import { Plus, Calendar, Flag, Sparkles } from 'lucide-react'
+import { Plus, Calendar, Flag, Sparkles, Target, Zap, Clock } from 'lucide-react'
 import { useTaskStore } from '@/store/taskStore'
 
 export default function TaskForm() {
@@ -34,144 +34,194 @@ export default function TaskForm() {
   const priorityConfig = {
     low: {
       label: 'Low Priority',
-      gradient: 'from-lavender-glow to-accent-400'
+      gradient: 'from-lavender-glow to-accent-400',
+      bg: 'bg-lavender-glow/10 dark:bg-accent-900/20',
+      border: 'border-lavender-glow/30 dark:border-accent-400/30',
+      text: 'text-lavender-glow dark:text-accent-400',
+      icon: <Target className="w-4 h-4" />
     },
     medium: {
       label: 'Medium Priority',
-      gradient: 'from-slate-gray to-secondary-500'
+      gradient: 'from-slate-gray to-secondary-500',
+      bg: 'bg-slate-gray/10 dark:bg-secondary-800/30',
+      border: 'border-slate-gray/30 dark:border-secondary-600/30',
+      text: 'text-slate-gray dark:text-cloud-gray',
+      icon: <Clock className="w-4 h-4" />
     },
     high: {
       label: 'High Priority',
-      gradient: 'from-sunset-orange to-warning-500'
+      gradient: 'from-sunset-orange to-warning-500',
+      bg: 'bg-sunset-orange/10 dark:bg-warning-900/20',
+      border: 'border-sunset-orange/30 dark:border-warning-400/30',
+      text: 'text-sunset-orange dark:text-warning-400',
+      icon: <Zap className="w-4 h-4" />
     },
   }
 
   const currentPriority = priorityConfig[priority]
 
   return (
-    <div className="bg-frost-white/90 dark:bg-obsidian-black/80 backdrop-blur-sm border border-slate-gray/20 dark:border-secondary-700/50 rounded-2xl p-8 shadow-modern dark:shadow-dark-modern animate-slide-up">
-      <form onSubmit={handleSubmit} className="space-y-6">
-        {/* Header */}
-        <div className="flex items-center gap-3 mb-6">
-          <div className="relative">
-            <div className={`absolute inset-0 bg-gradient-to-r ${currentPriority.gradient} rounded-xl blur opacity-30`}></div>
-            <div className="relative bg-frost-white dark:bg-obsidian-black/90 rounded-xl p-3 shadow-modern dark:shadow-dark-modern">
-              <Plus className="w-6 h-6 text-midnight-blue dark:text-accent-400" />
-            </div>
+    <div className="glass-morphism rounded-3xl p-8 border border-white/20 dark:border-secondary-700/30 shadow-2xl backdrop-blur-xl animate-slide-up">
+      {/* Header */}
+      <div className="mb-8">
+        <div className="flex items-center gap-3 mb-4">
+          <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-midnight-blue via-accent-500 to-lavender-glow morph-shape flex items-center justify-center shadow-glow">
+            <Plus className="w-6 h-6 text-frost-white" />
           </div>
           <div>
-            <h2 className="text-2xl font-bold text-midnight-blue dark:text-frost-white font-space">Create New Task</h2>
-            <p className="text-slate-gray dark:text-cloud-gray/80 text-sm">Add a new task to boost your productivity</p>
+            <h2 className="text-2xl font-bold gradient-text">Create Task</h2>
+            <p className="text-sm text-slate-gray dark:text-cloud-gray/70 font-medium">Add a new task to your workflow</p>
           </div>
         </div>
+        
+        {/* Decorative line */}
+        <div className="w-full h-px bg-gradient-to-r from-transparent via-midnight-blue/20 dark:via-accent-500/20 to-transparent"></div>
+      </div>
 
-        {/* Main input */}
-        <div className="space-y-2">
-          <label className="text-sm font-semibold text-midnight-blue dark:text-frost-white block">Task Title *</label>
-          <div className="relative">
-            <input
-              type="text"
-              placeholder="What amazing thing will you accomplish?"
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-              className="w-full px-4 py-3 bg-frost-white dark:bg-secondary-800/50 border border-slate-gray/30 dark:border-secondary-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-midnight-blue/50 dark:focus:ring-accent-400/50 focus:border-midnight-blue dark:focus:border-accent-400 transition-all duration-300 focus:scale-[1.02] focus:shadow-modern-lg dark:focus:shadow-accent-glow text-midnight-blue dark:text-frost-white placeholder-slate-gray dark:placeholder-cloud-gray/60 text-lg pr-12"
-              disabled={isLoading}
-            />
-            <div className="absolute right-4 top-1/2 transform -translate-y-1/2">
-              <Sparkles className="w-5 h-5 text-slate-gray/40 dark:text-cloud-gray/40" />
-            </div>
-          </div>
-        </div>
-
-        {/* Description */}
-        <div className="space-y-2">
-          <label className="text-sm font-semibold text-midnight-blue dark:text-frost-white block">Description</label>
-          <textarea
-            placeholder="Add more details about your task..."
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-            rows={3}
-            className="w-full px-4 py-3 bg-frost-white dark:bg-secondary-800/50 border border-slate-gray/30 dark:border-secondary-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-midnight-blue/50 dark:focus:ring-accent-400/50 focus:border-midnight-blue dark:focus:border-accent-400 transition-all duration-300 focus:scale-[1.02] focus:shadow-modern-lg dark:focus:shadow-accent-glow resize-none text-midnight-blue dark:text-frost-white placeholder-slate-gray dark:placeholder-cloud-gray/60"
-            disabled={isLoading}
+      <form onSubmit={handleSubmit} className="space-y-6">
+        {/* Task Title */}
+        <div className="space-y-3">
+          <label className="flex items-center gap-2 text-sm font-semibold text-midnight-blue dark:text-frost-white">
+            <Sparkles className="w-4 h-4" />
+            Task Title
+          </label>
+          <input
+            type="text"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            placeholder="What needs to be done?"
+            className="w-full px-5 py-4 text-midnight-blue dark:text-frost-white placeholder-slate-gray/60 dark:placeholder-cloud-gray/50
+                     glass-morphism rounded-2xl border border-white/20 dark:border-secondary-700/30
+                     focus:outline-none focus:ring-2 focus:ring-midnight-blue/50 dark:focus:ring-accent-400/50
+                     focus:border-midnight-blue/50 dark:focus:border-accent-400/50 transition-all duration-300
+                     backdrop-blur-sm shadow-modern dark:shadow-dark-modern
+                     hover:shadow-modern-lg dark:hover:shadow-accent-glow/20"
+            required
           />
         </div>
 
-        {/* Priority and Date Row */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {/* Priority Selector */}
-          <div className="space-y-2">
-            <label className="flex items-center gap-2 text-sm font-semibold text-midnight-blue dark:text-frost-white">
-              <Flag className="w-4 h-4" />
-              Priority Level
-            </label>
-            <div className="relative">
-              <select
-                value={priority}
-                onChange={(e) => setPriority(e.target.value as 'low' | 'medium' | 'high')}
-                className={`w-full px-4 py-3 pr-8 bg-frost-white dark:bg-secondary-800/50 border border-slate-gray/30 dark:border-secondary-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-midnight-blue/50 dark:focus:ring-accent-400/50 focus:border-midnight-blue dark:focus:border-accent-400 transition-all duration-300 focus:scale-[1.02] appearance-none cursor-pointer text-midnight-blue dark:text-frost-white`}
-                disabled={isLoading}
-              >
-                <option value="low">Low Priority - When you have time</option>
-                <option value="medium">Medium Priority - Important</option>
-                <option value="high">High Priority - Urgent</option>
-              </select>
-              <div className="absolute right-3 top-1/2 transform -translate-y-1/2 pointer-events-none">
-                <svg className="w-4 h-4 text-slate-gray dark:text-cloud-gray" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                </svg>
-              </div>
-            </div>
-          </div>
+        {/* Task Description */}
+        <div className="space-y-3">
+          <label className="flex items-center gap-2 text-sm font-semibold text-midnight-blue dark:text-frost-white">
+            <Flag className="w-4 h-4" />
+            Description
+            <span className="text-xs text-slate-gray dark:text-cloud-gray/60 font-normal">(Optional)</span>
+          </label>
+          <textarea
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+            placeholder="Add more details about this task..."
+            rows={4}
+            className="w-full px-5 py-4 text-midnight-blue dark:text-frost-white placeholder-slate-gray/60 dark:placeholder-cloud-gray/50
+                     glass-morphism rounded-2xl border border-white/20 dark:border-secondary-700/30
+                     focus:outline-none focus:ring-2 focus:ring-midnight-blue/50 dark:focus:ring-accent-400/50
+                     focus:border-midnight-blue/50 dark:focus:border-accent-400/50 transition-all duration-300
+                     backdrop-blur-sm shadow-modern dark:shadow-dark-modern resize-none
+                     hover:shadow-modern-lg dark:hover:shadow-accent-glow/20"
+          />
+        </div>
 
-          {/* Due Date */}
-          <div className="space-y-2">
-            <label className="flex items-center gap-2 text-sm font-semibold text-midnight-blue dark:text-frost-white">
-              <Calendar className="w-4 h-4" />
-              Due Date
-            </label>
-            <div className="relative">
-              <input
-                type="date"
-                value={dueDate}
-                onChange={(e) => setDueDate(e.target.value)}
-                className="w-full px-4 py-3 bg-frost-white dark:bg-secondary-800/50 border border-slate-gray/30 dark:border-secondary-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-midnight-blue/50 dark:focus:ring-accent-400/50 focus:border-midnight-blue dark:focus:border-accent-400 transition-all duration-300 focus:scale-[1.02] focus:shadow-modern-lg dark:focus:shadow-accent-glow text-midnight-blue dark:text-frost-white"
-                disabled={isLoading}
-              />
-            </div>
+        {/* Priority Selection */}
+        <div className="space-y-4">
+          <label className="flex items-center gap-2 text-sm font-semibold text-midnight-blue dark:text-frost-white">
+            {currentPriority.icon}
+            Priority Level
+          </label>
+          <div className="grid grid-cols-3 gap-3">
+            {Object.entries(priorityConfig).map(([key, config]) => (
+              <button
+                key={key}
+                type="button"
+                onClick={() => setPriority(key as any)}
+                className={`
+                  relative p-4 rounded-2xl border-2 transition-all duration-300 button-premium
+                  ${priority === key
+                    ? `${config.bg} ${config.border} shadow-glow scale-105 ring-2 ring-white/20 dark:ring-secondary-700/30`
+                    : 'glass-morphism border-white/10 dark:border-secondary-700/20 hover:border-white/30 dark:hover:border-secondary-600/40 hover:scale-102'
+                  }
+                `}
+              >
+                <div className="flex flex-col items-center gap-2">
+                  <div className={`w-8 h-8 rounded-xl flex items-center justify-center ${config.bg}`}>
+                    {config.icon}
+                  </div>
+                  <span className={`text-xs font-semibold ${priority === key ? config.text : 'text-slate-gray dark:text-cloud-gray'}`}>
+                    {key.charAt(0).toUpperCase() + key.slice(1)}
+                  </span>
+                </div>
+                
+                {/* Selection indicator */}
+                {priority === key && (
+                  <div className="absolute top-2 right-2 w-3 h-3 bg-gradient-to-r from-midnight-blue to-accent-500 rounded-full animate-pulse-glow"></div>
+                )}
+              </button>
+            ))}
           </div>
+        </div>
+
+        {/* Due Date */}
+        <div className="space-y-3">
+          <label className="flex items-center gap-2 text-sm font-semibold text-midnight-blue dark:text-frost-white">
+            <Calendar className="w-4 h-4" />
+            Due Date
+            <span className="text-xs text-slate-gray dark:text-cloud-gray/60 font-normal">(Optional)</span>
+          </label>
+          <input
+            type="date"
+            value={dueDate}
+            onChange={(e) => setDueDate(e.target.value)}
+            min={new Date().toISOString().split('T')[0]}
+            className="w-full px-5 py-4 text-midnight-blue dark:text-frost-white
+                     glass-morphism rounded-2xl border border-white/20 dark:border-secondary-700/30
+                     focus:outline-none focus:ring-2 focus:ring-midnight-blue/50 dark:focus:ring-accent-400/50
+                     focus:border-midnight-blue/50 dark:focus:border-accent-400/50 transition-all duration-300
+                     backdrop-blur-sm shadow-modern dark:shadow-dark-modern
+                     hover:shadow-modern-lg dark:hover:shadow-accent-glow/20
+                     [&::-webkit-calendar-picker-indicator]:opacity-60 dark:[&::-webkit-calendar-picker-indicator]:invert"
+          />
         </div>
 
         {/* Submit Button */}
         <button
           type="submit"
           disabled={!title.trim() || isLoading}
-          className="w-full bg-gradient-to-r from-midnight-blue to-midnight-blue/90 hover:from-midnight-blue/90 hover:to-midnight-blue/80 dark:from-accent-600 dark:to-accent-700 dark:hover:from-accent-500 dark:hover:to-accent-600 text-frost-white py-4 px-6 rounded-xl font-semibold text-lg transition-all duration-300 ease-in-out transform hover:scale-[1.02] hover:shadow-modern-xl dark:hover:shadow-accent-glow disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none flex items-center justify-center gap-3 group"
+          className="w-full flex items-center justify-center gap-3 px-6 py-4 
+                   bg-gradient-to-r from-midnight-blue via-accent-500 to-lavender-glow
+                   hover:from-midnight-blue/90 hover:via-accent-600 hover:to-lavender-glow/90
+                   text-frost-white font-bold rounded-2xl transition-all duration-300
+                   focus:outline-none focus:ring-2 focus:ring-midnight-blue/50 dark:focus:ring-accent-400/50 focus:ring-offset-2 dark:focus:ring-offset-obsidian-black
+                   disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none
+                   shadow-2xl hover:shadow-glow hover:scale-105 button-premium
+                   transform active:scale-95"
         >
           {isLoading ? (
             <>
-              <div className="loading-spinner w-5 h-5"></div>
-              <span>Creating your task...</span>
+              <div className="w-5 h-5 border-2 border-frost-white/30 border-t-frost-white rounded-full animate-spin"></div>
+              Creating Task...
             </>
           ) : (
             <>
-              <Plus className="w-5 h-5 transition-transform group-hover:rotate-90" />
-              <span>Create Task</span>
-              <div className="w-2 h-2 bg-frost-white/30 rounded-full group-hover:scale-150 transition-transform"></div>
+              <Plus className="w-5 h-5" />
+              Create Task
+              <Sparkles className="w-4 h-4 animate-pulse" />
             </>
           )}
         </button>
 
-        {/* Quick tips */}
-        <div className="bg-gradient-to-r from-frost-white to-slate-gray/5 dark:from-secondary-800/30 dark:to-secondary-900/30 rounded-xl p-4 border border-slate-gray/20 dark:border-secondary-700">
-          <div className="flex items-start gap-3">
-            <Sparkles className="w-5 h-5 text-midnight-blue dark:text-accent-400 mt-0.5 flex-shrink-0" />
-            <div>
-              <h4 className="text-sm font-semibold text-midnight-blue dark:text-frost-white mb-1">Pro Tips:</h4>
-              <ul className="text-xs text-slate-gray dark:text-cloud-gray space-y-1">
-                <li>• Use descriptive titles to make tasks clear</li>
-                <li>• Set due dates to stay on track</li>
-                <li>• Choose the right priority level for better focus</li>
-              </ul>
+        {/* Quick Stats */}
+        <div className="pt-4 border-t border-white/10 dark:border-secondary-700/30">
+          <div className="flex items-center justify-center gap-6 text-xs text-slate-gray dark:text-cloud-gray/70">
+            <div className="flex items-center gap-1">
+              <div className="w-2 h-2 bg-success-500 rounded-full animate-pulse"></div>
+              <span>Ready to create</span>
+            </div>
+            <div className="flex items-center gap-1">
+              <Target className="w-3 h-3" />
+              <span>Stay focused</span>
+            </div>
+            <div className="flex items-center gap-1">
+              <Sparkles className="w-3 h-3" />
+              <span>Achieve more</span>
             </div>
           </div>
         </div>
