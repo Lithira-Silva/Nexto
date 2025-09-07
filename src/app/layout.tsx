@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import { Inter, Space_Grotesk } from 'next/font/google'
 import './globals.css'
 
@@ -19,7 +19,11 @@ export const metadata: Metadata = {
   description: 'A beautiful and intuitive to-do list application built with Next.js, featuring modern design, dark mode support, and powerful task management capabilities.',
   keywords: 'todo, task management, productivity, next.js, modern design, dark mode',
   authors: [{ name: 'NexTo Team' }],
-  viewport: 'width=device-width, initial-scale=1',
+}
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
   themeColor: [
     { media: '(prefers-color-scheme: light)', color: '#F7F9FC' },
     { media: '(prefers-color-scheme: dark)', color: '#0F172A' }
