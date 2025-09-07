@@ -299,13 +299,15 @@ export default function TaskCalendar() {
         <>
           {viewType === 'daily' && (
             <div className="space-y-4">
-              <div className="bg-gradient-to-r from-midnight-blue/5 to-lavender-glow/5 dark:from-accent-500/10 dark:to-accent-300/10 rounded-xl p-4">
-                <h4 className="font-semibold text-midnight-blue dark:text-frost-white mb-3">
+              <div className="bg-gradient-to-r from-midnight-blue/5 to-lavender-glow/5 dark:from-accent-500/10 dark:to-accent-300/10 rounded-xl p-6">
+                <h4 className="font-semibold text-midnight-blue dark:text-frost-white mb-4">
                   Tasks for {currentDate.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' })}
                 </h4>
-                <div className="space-y-3">
+                <div className="space-y-4">
                   {filteredTasks.map((task) => (
-                    <TaskCard key={task.id} task={task} />
+                    <div key={task.id} className="transform transition-all duration-200">
+                      <TaskCard task={task} layout="vertical" />
+                    </div>
                   ))}
                 </div>
               </div>

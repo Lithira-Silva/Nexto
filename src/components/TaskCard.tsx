@@ -6,9 +6,10 @@ import { useTaskStore, Task } from '@/store/taskStore'
 
 interface TaskCardProps {
   task: Task
+  layout?: 'horizontal' | 'vertical'
 }
 
-export default function TaskCard({ task }: TaskCardProps) {
+export default function TaskCard({ task, layout = 'horizontal' }: TaskCardProps) {
   const [isEditing, setIsEditing] = useState(false)
   const [editTitle, setEditTitle] = useState(task.title)
   const [editDescription, setEditDescription] = useState(task.description || '')
@@ -202,12 +203,17 @@ export default function TaskCard({ task }: TaskCardProps) {
                 )}
                 
                 {/* Metadata */}
-                <div className="flex items-center flex-wrap gap-3 text-sm">
+                <div className={`text-sm ${
+                  layout === 'vertical' 
+                    ? 'space-y-3' 
+                    : 'flex items-center gap-3'
+                }`}>
                   {/* Priority Badge */}
                   <div className={`
                     flex items-center gap-2 px-3 py-2 rounded-full border transition-all duration-200
                     ${priority.bg} ${priority.border} ${priority.glowClass}
                     hover:scale-105 hover:shadow-lg
+                    ${layout === 'vertical' ? 'w-fit' : ''}
                   `}>
                     <span className={`font-medium ${priority.text}`}>{priority.label}</span>
                   </div>
@@ -221,6 +227,7 @@ export default function TaskCard({ task }: TaskCardProps) {
                         : 'bg-slate-gray/5 dark:bg-secondary-800/30 border-slate-gray/30 dark:border-secondary-700 text-slate-gray dark:text-cloud-gray'
                       }
                       hover:scale-105
+                      ${layout === 'vertical' ? 'w-fit' : ''}
                     `}>
                       <Calendar className="w-4 h-4" />
                       <span className="font-medium">{formatDate(task.dueDate)}</span>
