@@ -1,6 +1,6 @@
 # NexTo - Modern To-Do List Application
 
-A feature-rich, modern to-do list application built with Next.js, React, TypeScript, and Tailwind CSS.
+A feature-rich, modern to-do list application built with Next.js, React, TypeScript, Tailwind CSS, and Supabase.
 
 ## Features
 
@@ -8,6 +8,7 @@ A feature-rich, modern to-do list application built with Next.js, React, TypeScr
 - Clean, responsive design with Tailwind CSS
 - Custom color palette with NexTo branding
 - Smooth transitions and animations
+- Dark/light theme support
 
 📝 **Task Management**
 - Create, read, update, and delete tasks
@@ -15,17 +16,32 @@ A feature-rich, modern to-do list application built with Next.js, React, TypeScr
 - Priority levels (Low, Medium, High)
 - Task completion tracking
 
-🔍 **Advanced Filtering & Search**
+� **Calendar Views**
+- Daily, weekly, and monthly calendar views
+- Task visualization by due dates
+- Navigation between time periods
+- Visual task analytics and statistics
+
+�🔍 **Advanced Filtering & Search**
 - Search tasks by title or description
 - Filter by status (All, Active, Completed)
 - Sort by creation date, due date, priority, or alphabetically
 - Real-time task statistics
 
-🚀 **Modern Architecture**
-- Next.js 15 with App Router
+🚀 **Backend & Database**
+- **Supabase Integration**: PostgreSQL database with real-time capabilities
+- **Hybrid Storage**: Automatic fallback to file storage if Supabase unavailable
+- **Persistent Storage**: Tasks saved permanently in the cloud
+- **Type Safety**: Full TypeScript integration with database types
+- **Row Level Security**: Secure data access patterns
+- **Real-time Updates**: Changes sync instantly across sessions
+
+🏗️ **Modern Architecture**
+- Next.js 14 with App Router
 - TypeScript for type safety
 - Zustand for state management
-- RESTful API routes for data operations
+- Supabase for backend services
+- RESTful API routes with database integration
 - Component-based architecture
 
 ## Prerequisites
@@ -46,12 +62,41 @@ If your Node.js version is outdated, please update it from [nodejs.org](https://
 
 ## Getting Started
 
+### Prerequisites
+
+Before running this project, ensure you have:
+
+- **Node.js**: Version 18.18.0 or higher
+- **npm**: Version 9.0.0 or higher (comes with Node.js)
+- **Supabase Account**: Free account at [supabase.com](https://supabase.com)
+
+### Quick Setup
+
 1. **Clone or download the project**
    ```bash
    cd NextTo
    ```
 
 2. **Install dependencies**
+   ```bash
+   npm install
+   ```
+
+3. **Set up Supabase Backend**
+   
+   **Option A: Quick Start (Skip backend for now)**
+   ```bash
+   # The app will work with mock data initially
+   npm run dev
+   ```
+   
+   **Option B: Full Setup with Database**
+   - Follow the detailed guide in `SUPABASE_SETUP.md`
+   - Create Supabase project and get credentials
+   - Update `.env.local` with your Supabase URL and API key
+   - Run the SQL schema in Supabase dashboard
+
+4. **Start the development server**
    ```bash
    npm install
    ```
@@ -86,11 +131,18 @@ NextTo/
 │   │   ├── Header.tsx      # App header
 │   │   ├── TaskCard.tsx    # Individual task display
 │   │   ├── TaskForm.tsx    # Task creation form
-│   │   └── TaskList.tsx    # Task list with filtering
-│   └── store/              # State management
-│       └── taskStore.ts    # Zustand task store
-├── public/                 # Static assets
-├── .github/               # GitHub configuration
+│   │   ├── TaskList.tsx    # Task list with filtering
+│   │   └── TaskCalendar.tsx # Calendar views
+│   ├── lib/               # Utility libraries
+│   │   ├── supabase.ts    # Supabase client configuration
+│   │   └── taskData.ts    # File storage fallback
+│   └── store/             # State management
+│       └── taskStore.ts   # Zustand task store
+├── database/              # Database schema
+│   └── schema.sql         # PostgreSQL schema for Supabase
+├── public/                # Static assets
+├── .env.local.example     # Environment variables template
+├── SUPABASE_SETUP.md      # Backend setup guide
 ├── package.json           # Dependencies and scripts
 ├── tailwind.config.js     # Tailwind configuration
 ├── tsconfig.json         # TypeScript configuration
@@ -99,24 +151,36 @@ NextTo/
 
 ## Technologies Used
 
-- **[Next.js 15](https://nextjs.org/)** - React framework with App Router
+### Frontend
+- **[Next.js 14](https://nextjs.org/)** - React framework with App Router
 - **[React 18](https://reactjs.org/)** - UI library
 - **[TypeScript](https://www.typescriptlang.org/)** - Type safety
 - **[Tailwind CSS](https://tailwindcss.com/)** - Utility-first CSS framework
 - **[Zustand](https://zustand-demo.pmnd.rs/)** - Lightweight state management
 - **[Lucide React](https://lucide.dev/)** - Beautiful icons
+
+### Backend & Database
+- **[Supabase](https://supabase.com/)** - Backend-as-a-Service with PostgreSQL
+- **[PostgreSQL](https://postgresql.org/)** - Robust relational database
+- **Row Level Security** - Database-level security policies
+- **Real-time subscriptions** - Live data updates
+
+### Development & Tooling
 - **[ESLint](https://eslint.org/)** - Code linting
 - **[Prettier](https://prettier.io/)** - Code formatting
+- **File Storage Fallback** - Works without backend during development
 
 ## API Endpoints
 
-The application includes RESTful API routes:
+The application includes RESTful API routes with hybrid storage:
 
-- `GET /api/tasks` - Get all tasks
+- `GET /api/tasks` - Get all tasks (Supabase or file storage)
 - `POST /api/tasks` - Create a new task
 - `GET /api/tasks/[id]` - Get a specific task
 - `PUT /api/tasks/[id]` - Update a task
 - `DELETE /api/tasks/[id]` - Delete a task
+
+**Storage Strategy**: The API automatically uses Supabase when configured, falling back to file storage for development without a backend.
 
 ## Color Palette
 
