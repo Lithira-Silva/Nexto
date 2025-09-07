@@ -1,26 +1,12 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { Task } from '@/store/taskStore'
-
-// In-memory storage for demo purposes
-// In a real app, you'd use a database
-let tasks: Task[] = [
-  {
-    id: '1',
-    title: 'Welcome to NexTo!',
-    description: 'This is your first task. You can edit, complete, or delete it.',
-    completed: false,
-    priority: 'medium',
-    createdAt: new Date().toISOString(),
-    updatedAt: new Date().toISOString(),
-  }
-]
+import { getTask, updateTask, deleteTask } from '@/lib/taskData'
 
 export async function GET(
   request: NextRequest,
   { params }: { params: { id: string } }
 ) {
   try {
-    const task = tasks.find(t => t.id === params.id)
+    const task = getTask(params.id)
     
     if (!task) {
       return NextResponse.json(
@@ -43,24 +29,15 @@ export async function PUT(
   { params }: { params: { id: string } }
 ) {
   try {
-    const taskIndex = tasks.findIndex(t => t.id === params.id)
+    const body = await request.json()
+    const updatedTask = updateTask(params.id, body)
     
-    if (taskIndex === -1) {
+    if (!updatedTask) {
       return NextResponse.json(
         { error: 'Task not found' },
         { status: 404 }
       )
     }
-    
-    const body = await request.json()
-    const updatedTask: Task = {
-      ...tasks[taskIndex],
-      ...body,
-      id: params.id, // Ensure ID doesn't change
-      updatedAt: new Date().toISOString(),
-    }
-    
-    tasks[taskIndex] = updatedTask
     
     return NextResponse.json(updatedTask)
   } catch (error) {
@@ -76,16 +53,14 @@ export async function DELETE(
   { params }: { params: { id: string } }
 ) {
   try {
-    const taskIndex = tasks.findIndex(t => t.id === params.id)
+    const success = deleteTask(params.id)
     
-    if (taskIndex === -1) {
+    if (!success) {
       return NextResponse.json(
         { error: 'Task not found' },
         { status: 404 }
       )
     }
-    
-    tasks.splice(taskIndex, 1)
     
     return NextResponse.json({ message: 'Task deleted successfully' })
   } catch (error) {
