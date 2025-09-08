@@ -3,7 +3,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* ===== AWARD-WINNING UI/UX DESIGN SYSTEM ===== */
+/* ===== PREMIUM UI/UX DESIGN SYSTEM ===== */
 
 :root {
   /* Premium Color Palette */
@@ -149,7 +149,7 @@ html {
   scrollbar-color: #667eea rgba(15, 23, 42, 0.3);
 }
 
-/* ===== AWARD-WINNING ANIMATIONS ===== */
+/* ===== PREMIUM ANIMATIONS ===== */
 @keyframes gradient-flow {
   0%, 100% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
@@ -744,7 +744,7 @@ html {
   }
 }
 
-/* ===== AWARD-WINNING CSS COMPLETE ===== */
+/* ===== PREMIUM CSS COMPLETE ===== */
 
 /* Remove all legacy styles - this section is now empty and clean */
 

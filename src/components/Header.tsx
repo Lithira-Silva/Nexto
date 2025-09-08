@@ -60,7 +60,7 @@ export default function Header() {
               <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-medium text-slate-gray dark:text-cloud-gray mb-4 leading-relaxed">
                 Revolutionize your productivity with our{' '}
                 <span className="relative inline-block">
-                  <span className="text-midnight-blue dark:text-accent-400 font-bold">award-winning</span>
+                  <span className="text-midnight-blue dark:text-accent-400 font-bold">innovative</span>
                   <div className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-midnight-blue to-accent-500 animate-shimmer"></div>
                 </span>,{' '}
                 <span className="relative inline-block">
@@ -88,12 +88,12 @@ export default function Header() {
                     <Brain className="w-5 h-5 sm:w-6 sm:h-6 text-frost-white" />
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-lg sm:text-xl font-bold text-midnight-blue dark:text-frost-white">Smart Priorities</h3>
+                    <h3 className="text-lg sm:text-xl font-bold text-midnight-blue dark:text-frost-white">AI-Powered Intelligence</h3>
                     <div className="w-12 h-0.5 bg-gradient-to-r from-midnight-blue to-accent-500 mt-1"></div>
                   </div>
                 </div>
                 <p className="text-sm sm:text-base text-slate-gray dark:text-cloud-gray/80 font-medium">
-                  AI-powered priority detection that learns from your behavior
+                  Smart task analysis and natural language processing for effortless productivity
                 </p>
               </div>
             </div>
@@ -126,7 +126,7 @@ export default function Header() {
                     <Award className="w-5 h-5 sm:w-6 sm:h-6 text-frost-white" />
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-lg sm:text-xl font-bold text-midnight-blue dark:text-frost-white">Award-Winning Design</h3>
+                    <h3 className="text-lg sm:text-xl font-bold text-midnight-blue dark:text-frost-white">Premium Design</h3>
                     <div className="w-12 h-0.5 bg-gradient-to-r from-lavender-glow to-accent-400 mt-1"></div>
                   </div>
                 </div>

@@ -33,20 +33,33 @@ export const useTaskStore = create<TaskStore>((set, get) => ({
   addTask: async (taskData) => {
     set({ isLoading: true, error: null })
     try {
+      console.log('TaskStore: Sending POST request to /api/tasks with:', taskData)
+      
       const response = await fetch('/api/tasks', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(taskData),
       })
       
-      if (!response.ok) throw new Error('Failed to add task')
+      console.log('TaskStore: Response status:', response.status)
+      
+      if (!response.ok) {
+        const errorText = await response.text()
+        console.error('TaskStore: Error response:', errorText)
+        throw new Error(`Failed to add task: ${response.status} ${errorText}`)
+      }
       
       const newTask = await response.json()
+      console.log('TaskStore: Received new task:', newTask)
+      
       set((state) => ({ 
         tasks: [...state.tasks, newTask],
         isLoading: false 
       }))
+      
+      console.log('TaskStore: Task added successfully to store')
     } catch (error) {
+      console.error('TaskStore: Error in addTask:', error)
       set({ 
         error: error instanceof Error ? error.message : 'Failed to add task',
         isLoading: false 
@@ -111,12 +124,24 @@ export const useTaskStore = create<TaskStore>((set, get) => ({
   loadTasks: async () => {
     set({ isLoading: true, error: null })
     try {
+      console.log('TaskStore: Loading tasks from /api/tasks')
+      
       const response = await fetch('/api/tasks')
-      if (!response.ok) throw new Error('Failed to load tasks')
+      
+      console.log('TaskStore: Load tasks response status:', response.status)
+      
+      if (!response.ok) {
+        const errorText = await response.text()
+        console.error('TaskStore: Error loading tasks:', errorText)
+        throw new Error(`Failed to load tasks: ${response.status} ${errorText}`)
+      }
       
       const tasks = await response.json()
+      console.log('TaskStore: Loaded tasks:', tasks)
+      
       set({ tasks, isLoading: false })
     } catch (error) {
+      console.error('TaskStore: Error in loadTasks:', error)
       set({ 
         error: error instanceof Error ? error.message : 'Failed to load tasks',
         isLoading: false 

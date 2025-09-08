@@ -81,7 +81,7 @@ export default function TaskCard({ task, layout = 'horizontal' }: TaskCardProps)
   }
 
   const isOverdue = task.dueDate && new Date(task.dueDate) < new Date() && !task.completed
-  const priority = priorityConfig[task.priority]
+  const priority = priorityConfig[task.priority] || priorityConfig.medium // Fallback to medium if priority is invalid
 
   // Dynamic card classes based on completion and theme
   const getCardClasses = () => {

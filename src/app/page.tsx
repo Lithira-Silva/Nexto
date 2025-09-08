@@ -8,6 +8,7 @@ import TaskCalendar from '@/components/TaskCalendar'
 import TaskAnalytics from '@/components/TaskAnalytics'
 import Header from '@/components/Header'
 import ThemeToggle from '@/components/ThemeToggle'
+import AIInsights from '@/components/AIInsights'
 import { useTaskStore } from '@/store/taskStore'
 
 type ViewMode = 'list' | 'calendar'
@@ -116,10 +117,12 @@ export default function Home() {
             /* List View Layout */
             <div className="grid grid-cols-1 xl:grid-cols-3 gap-8 slide-in-bottom">
               {/* Task Creation Form */}
-              <div className="xl:col-span-1">
+              <div className="xl:col-span-1 space-y-6">
                 <div className="sticky top-8">
                   <TaskForm />
                 </div>
+                {/* AI Insights */}
+                <AIInsights />
               </div>
 
               {/* Task List */}
@@ -132,6 +135,9 @@ export default function Home() {
             <div className="space-y-8 slide-in-bottom">
               {/* Analytics Section */}
               <TaskAnalytics />
+              
+              {/* AI Insights */}
+              <AIInsights />
               
               <div className="grid grid-cols-1 xl:grid-cols-4 gap-8">
                 {/* Task Creation Form */}
@@ -149,7 +155,7 @@ export default function Home() {
             </div>
           )}
 
-          {/* Award-Winning Footer */}
+          {/* Premium Footer */}
           <footer className="mt-20 text-center slide-in-bottom">
             <div className="relative">
               {/* Decorative background */}
@@ -163,7 +169,7 @@ export default function Home() {
                 <div className="flex items-center gap-1">
                   <span className="font-bold gradient-text">Next.js</span>
                   <span className="text-slate-gray dark:text-cloud-gray text-sm">&</span>
-                  <span className="font-bold gradient-text">Award-Winning Design</span>
+                  <span className="font-bold gradient-text">Premium Design</span>
                 </div>
                 <div className="w-2 h-2 bg-gradient-to-r from-midnight-blue to-accent-500 rounded-full animate-bounce"></div>
               </div>
