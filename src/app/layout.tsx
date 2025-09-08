@@ -39,20 +39,11 @@ export default function RootLayout({
     <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable}`}>
       <body className={`${inter.className} antialiased`}>
         <div className="min-h-screen bg-modern-gradient dark:bg-dark-gradient relative overflow-hidden">
-          {/* Background decoration */}
-          <div className="absolute inset-0 pointer-events-none">
-            {/* Floating orbs */}
-            <div className="absolute top-10 left-10 w-32 h-32 bg-lavender-glow/10 dark:bg-accent-400/10 rounded-full blur-3xl animate-float"></div>
-            <div className="absolute top-40 right-20 w-24 h-24 bg-emerald-green/10 dark:bg-success-400/10 rounded-full blur-2xl animate-float" style={{animationDelay: '1s'}}></div>
-            <div className="absolute bottom-20 left-1/3 w-40 h-40 bg-sunset-orange/10 dark:bg-warning-400/10 rounded-full blur-3xl animate-float" style={{animationDelay: '2s'}}></div>
-            <div className="absolute bottom-40 right-1/4 w-28 h-28 bg-midnight-blue/5 dark:bg-primary-400/5 rounded-full blur-2xl animate-float" style={{animationDelay: '0.5s'}}></div>
-            
-            {/* Subtle grid pattern */}
-            <div className="absolute inset-0 opacity-[0.03] dark:opacity-[0.05]" 
-                 style={{
-                   backgroundImage: `url("data:image/svg+xml,%3csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3e%3cdefs%3e%3cpattern id='grid' width='60' height='60' patternUnits='userSpaceOnUse'%3e%3cpath d='m 60 0 l 0 60 l -60 0 l 0 -60 z' fill='none' stroke='%23000000' stroke-width='1'/%3e%3c/pattern%3e%3c/defs%3e%3crect width='100%25' height='100%25' fill='url(%23grid)'/%3e%3c/svg%3e")`
-                 }}>
-            </div>
+          {/* Subtle grid pattern */}
+          <div className="absolute inset-0 opacity-[0.03] dark:opacity-[0.05]" 
+               style={{
+                 backgroundImage: `url("data:image/svg+xml,%3csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3e%3cdefs%3e%3cpattern id='grid' width='60' height='60' patternUnits='userSpaceOnUse'%3e%3cpath d='m 60 0 l 0 60 l -60 0 l 0 -60 z' fill='none' stroke='%23000000' stroke-width='1'/%3e%3c/pattern%3e%3c/defs%3e%3crect width='100%25' height='100%25' fill='url(%23grid)'/%3e%3c/svg%3e")`
+               }}>
           </div>
           
           {/* Glass morphism overlay */}

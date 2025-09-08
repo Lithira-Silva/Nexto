@@ -42,13 +42,8 @@ export default function Home() {
       <div className="relative overflow-hidden">
         {/* Background Elements */}
         <div className="absolute inset-0 bg-gradient-to-br from-frost-white via-cloud-white to-lavender-glow/20 dark:from-obsidian-black dark:via-secondary-900 dark:to-accent-900/10"></div>
-        <div className="absolute top-0 left-0 w-full h-full opacity-30">
-          <div className="absolute top-20 left-10 w-72 h-72 bg-midnight-blue/5 dark:bg-accent-500/5 rounded-full blur-3xl animate-float"></div>
-          <div className="absolute top-40 right-16 w-96 h-96 bg-lavender-glow/10 dark:bg-accent-400/10 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }}></div>
-          <div className="absolute bottom-20 left-1/3 w-64 h-64 bg-sunset-orange/5 dark:bg-warning-400/5 rounded-full blur-3xl animate-float" style={{ animationDelay: '4s' }}></div>
-        </div>
         
-        <div className="relative px-4 py-16">
+        <div className="relative px-4 py-4 pt-8">
           <div className="max-w-7xl mx-auto">
             <Header />
           </div>
@@ -174,8 +169,6 @@ export default function Home() {
               </div>
 
               {/* Floating elements */}
-              <div className="absolute -top-2 left-8 w-4 h-4 bg-lavender-glow/20 dark:bg-accent-400/20 rounded-full animate-float"></div>
-              <div className="absolute -bottom-2 right-12 w-3 h-3 bg-midnight-blue/20 dark:bg-accent-500/20 rounded-full animate-float" style={{ animationDelay: '1.5s' }}></div>
             </div>
           </footer>
         </div>

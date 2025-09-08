@@ -26,6 +26,7 @@
   --shadow-premium: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
   --shadow-glow: 0 0 30px rgba(90, 103, 186, 0.3);
   --shadow-neumorphism: 20px 20px 60px #bebebe, -20px -20px 60px #ffffff;
+  --shadow-modern-xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
   
   /* Typography Scale */
   --font-size-xs: 0.75rem;
@@ -81,6 +82,7 @@ body {
   min-height: 100vh;
   overflow-x: hidden;
   transition: all var(--duration-normal) var(--easing-smooth);
+  padding-top: env(safe-area-inset-top);
 }
 
 .dark body {
@@ -171,8 +173,14 @@ html {
 }
 
 @keyframes shimmer {
-  0% { background-position: -200px 0; }
-  100% { background-position: calc(200px + 100%) 0; }
+  0% { 
+    background-position: -200px 0; 
+    transform: translateX(-100%);
+  }
+  100% { 
+    background-position: calc(200px + 100%) 0;
+    transform: translateX(100%);
+  }
 }
 
 @keyframes slideInUp {
@@ -244,6 +252,39 @@ html {
   border: 1px solid rgba(148, 163, 184, 0.08);
 }
 
+/* Gradient Text Utility */
+.gradient-text {
+  background: linear-gradient(135deg, var(--nexto-primary) 0%, var(--nexto-accent) 50%, var(--nexto-secondary) 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 200% 100%;
+  animation: gradient-flow 3s ease infinite;
+}
+
+.dark .gradient-text {
+  background: linear-gradient(135deg, #A78BFA 0%, #8b5cf6 50%, #7c3aed 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 200% 100%;
+  animation: gradient-flow 3s ease infinite;
+}
+
+/* Shadow Utilities */
+.shadow-modern-xl {
+  box-shadow: var(--shadow-modern-xl);
+}
+
+.shadow-glow {
+  box-shadow: var(--shadow-glow);
+}
+
+/* Drop Shadow Utilities */
+.drop-shadow-xl {
+  filter: drop-shadow(0 20px 13px rgb(0 0 0 / 0.03)) drop-shadow(0 8px 5px rgb(0 0 0 / 0.08));
+}
+
 .neumorphism {
   background: #f0f0f3;
   box-shadow: var(--shadow-neumorphism);
@@ -304,6 +345,56 @@ html {
 
 .morph-shape {
   animation: morph 8s ease-in-out infinite;
+}
+
+/* ===== PREMIUM HEADER ANIMATIONS ===== */
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes shimmer-line {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+@keyframes bounce-gentle {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes pulse-gentle {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.05); }
+}
+
+.animate-gradient-shift {
+  background-size: 200% 200%;
+  animation: gradient-shift 8s ease infinite;
+}
+
+.animate-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.animate-shimmer::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  animation: shimmer-line 2s infinite;
+}
+
+.animate-bounce-gentle {
+  animation: bounce-gentle 3s ease-in-out infinite;
+}
+
+.animate-pulse-gentle {
+  animation: pulse-gentle 4s ease-in-out infinite;
 }
 
 /* ===== PREMIUM INTERACTIVE ELEMENTS ===== */
