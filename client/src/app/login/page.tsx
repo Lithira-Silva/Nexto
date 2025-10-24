@@ -75,14 +75,14 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="flex max-h-screen min-h-screen overflow-hidden passionate-scroll smooth-scroll bg-gradient-to-br from-frost-white via-cloud-white to-lavender-glow/10 dark:from-obsidian-black dark:via-secondary-900 dark:to-accent-900/10">
+    <div className="flex max-h-screen min-h-screen overflow-hidden passionate-scroll smooth-scroll bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 dark:from-slate-900 dark:via-slate-800 dark:to-indigo-950">
       {/* LEFT SIDE - Brand & Header Section */}
-      <div className="relative hidden overflow-y-auto lg:flex lg:w-1/2 xl:w-3/5 bg-gradient-to-br from-midnight-blue via-accent-600 to-lavender-glow dark:from-secondary-900 dark:via-accent-900 dark:to-obsidian-black">
+      <div className="relative hidden overflow-y-auto lg:flex lg:w-1/2 xl:w-3/5 bg-gradient-to-br from-indigo-600 via-purple-600 to-blue-600 dark:from-indigo-900 dark:via-purple-900 dark:to-blue-900">
         {/* Animated Background Effects - Fixed positioning */}
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute w-64 h-64 rounded-full top-10 left-10 bg-accent-400/20 blur-3xl animate-pulse-gentle"></div>
-          <div className="absolute rounded-full bottom-10 right-10 w-80 h-80 bg-lavender-glow/20 blur-3xl animate-pulse-gentle" style={{ animationDelay: '1s' }}></div>
-          <div className="absolute transform -translate-x-1/2 -translate-y-1/2 rounded-full top-1/2 left-1/2 w-96 h-96 bg-frost-white/5 blur-3xl"></div>
+          <div className="absolute w-64 h-64 rounded-full top-10 left-10 bg-white/10 blur-3xl animate-pulse-gentle"></div>
+          <div className="absolute rounded-full bottom-10 right-10 w-80 h-80 bg-blue-400/20 blur-3xl animate-pulse-gentle" style={{ animationDelay: '1s' }}></div>
+          <div className="absolute transform -translate-x-1/2 -translate-y-1/2 rounded-full top-1/2 left-1/2 w-96 h-96 bg-purple-400/10 blur-3xl"></div>
         </div>
 
         {/* Content Container with proper padding and scrolling */}
@@ -93,32 +93,32 @@ export default function LoginPage() {
               {/* Logo Section with Advanced Animations */}
               <div className="flex items-center gap-4 mb-8 group">
                 <div className="relative">
-                  {/* Animated Glow Ring - Reduced size */}
-                  <div className="absolute inset-0 transition-all duration-700 bg-gradient-to-r from-frost-white/30 via-lavender-glow/40 to-frost-white/30 rounded-2xl blur-lg animate-pulse-glow group-hover:animate-spin-slow"></div>
+                  {/* Animated Glow Ring - Enhanced colors */}
+                  <div className="absolute inset-0 transition-all duration-700 bg-gradient-to-r from-white/20 via-blue-300/30 to-purple-300/30 rounded-2xl blur-lg animate-pulse-glow group-hover:animate-spin-slow"></div>
                   
-                  {/* Main Logo Container - Smaller */}
-                  <div className="relative flex items-center justify-center w-16 h-16 transition-all duration-500 border shadow-xl rounded-2xl bg-gradient-to-br from-frost-white/20 to-frost-white/10 backdrop-blur-lg border-frost-white/30 group-hover:scale-110">
+                  {/* Main Logo Container - Enhanced colors */}
+                  <div className="relative flex items-center justify-center w-16 h-16 transition-all duration-500 border shadow-xl rounded-2xl bg-gradient-to-br from-white/15 to-white/5 backdrop-blur-lg border-white/20 group-hover:scale-110">
                     {/* Inner Glow */}
-                    <div className="absolute inset-2 bg-gradient-to-br from-frost-white/30 to-transparent rounded-xl animate-shimmer"></div>
+                    <div className="absolute inset-2 bg-gradient-to-br from-white/20 to-transparent rounded-xl animate-shimmer"></div>
                     
                     {/* Icon */}
-                    <CheckSquare className="relative w-8 h-8 transition-all duration-500 text-frost-white group-hover:rotate-12 drop-shadow-lg" />
+                    <CheckSquare className="relative w-8 h-8 text-white transition-all duration-500 group-hover:rotate-12 drop-shadow-lg" />
                   </div>
                   
-                  {/* Premium Badge with Animation - Smaller */}
-                  <div className="absolute flex items-center justify-center w-6 h-6 rounded-full -top-1 -right-1 bg-gradient-to-r from-warning-400 to-sunset-orange shadow-glow animate-bounce-gentle group-hover:animate-pulse">
-                    <Crown className="w-3 h-3 text-frost-white drop-shadow-sm" />
+                  {/* Premium Badge - Enhanced colors */}
+                  <div className="absolute flex items-center justify-center w-6 h-6 rounded-full -top-1 -right-1 bg-gradient-to-r from-amber-400 to-orange-500 shadow-glow animate-bounce-gentle group-hover:animate-pulse">
+                    <Crown className="w-3 h-3 text-white drop-shadow-sm" />
                   </div>
                   
-                  {/* Floating Particles - Reduced */}
-                  <div className="absolute w-1.5 h-1.5 rounded-full -top-0.5 -left-0.5 bg-frost-white/60 animate-float" style={{animationDelay: '0s'}}></div>
-                  <div className="absolute w-1 h-1 rounded-full top-1/2 -right-1 bg-lavender-glow/80 animate-float" style={{animationDelay: '1s'}}></div>
-                  <div className="absolute w-0.5 h-0.5 rounded-full -bottom-0.5 left-1/3 bg-frost-white/40 animate-float" style={{animationDelay: '2s'}}></div>
+                  {/* Floating Particles - Enhanced colors */}
+                  <div className="absolute w-1.5 h-1.5 rounded-full -top-0.5 -left-0.5 bg-white/60 animate-float" style={{animationDelay: '0s'}}></div>
+                  <div className="absolute w-1 h-1 rounded-full top-1/2 -right-1 bg-blue-300/80 animate-float" style={{animationDelay: '1s'}}></div>
+                  <div className="absolute w-0.5 h-0.5 rounded-full -bottom-0.5 left-1/3 bg-purple-300/60 animate-float" style={{animationDelay: '2s'}}></div>
                 </div>
                 
                 {/* Brand Text with Staggered Animation */}
                 <div className="flex-1">
-                  <h1 className="mb-1 text-4xl font-black tracking-tight xl:text-5xl text-frost-white drop-shadow-xl">
+                  <h1 className="mb-1 text-4xl font-black tracking-tight text-white xl:text-5xl drop-shadow-xl">
                     <span className="inline-block animate-slide-in-left" style={{animationDelay: '0.2s'}}>N</span>
                     <span className="inline-block animate-slide-in-left" style={{animationDelay: '0.3s'}}>e</span>
                     <span className="inline-block animate-slide-in-left" style={{animationDelay: '0.4s'}}>x</span>
@@ -126,46 +126,46 @@ export default function LoginPage() {
                     <span className="inline-block animate-slide-in-left" style={{animationDelay: '0.6s'}}>o</span>
                   </h1>
                   <div className="relative">
-                    <p className="text-sm font-bold tracking-wider text-cloud-white/90 animate-slide-in-left xl:text-base" style={{animationDelay: '0.8s'}}>
+                    <p className="text-sm font-bold tracking-wider text-blue-100 animate-slide-in-left xl:text-base" style={{animationDelay: '0.8s'}}>
                       PREMIUM TASK MANAGEMENT
                     </p>
-                    {/* Animated Underline */}
-                    <div className="absolute -bottom-0.5 left-0 h-0.5 bg-gradient-to-r from-frost-white via-lavender-glow to-frost-white animate-expand-width" style={{animationDelay: '1s'}}></div>
+                    {/* Animated Underline - Enhanced colors */}
+                    <div className="absolute -bottom-0.5 left-0 h-0.5 bg-gradient-to-r from-white via-blue-300 to-purple-300 animate-expand-width" style={{animationDelay: '1s'}}></div>
                   </div>
                 </div>
               </div>
               
               {/* Welcome Message with Typewriter Effect */}
               <div className="mb-8 animate-fade-in-up" style={{animationDelay: '1.2s'}}>
-                <h2 className="mb-3 text-2xl font-bold leading-tight xl:text-3xl text-frost-white">
+                <h2 className="mb-3 text-2xl font-bold leading-tight text-white xl:text-3xl">
                   <span className="inline-block animate-typewriter">Welcome to the Future</span>
                   <br />
-                  <span className="inline-block animate-typewriter text-lavender-glow" style={{animationDelay: '1.8s'}}>of Productivity</span>
+                  <span className="inline-block text-blue-200 animate-typewriter" style={{animationDelay: '1.8s'}}>of Productivity</span>
                 </h2>
-                <p className="text-base font-medium leading-relaxed text-cloud-white/90 xl:text-lg animate-fade-in-up" style={{animationDelay: '2.4s'}}>
-                  Experience <span className="font-bold text-frost-white">intelligent task management</span> with 
-                  <span className="font-bold text-lavender-glow"> AI-powered insights</span>, beautiful design, and seamless workflows.
+                <p className="text-base font-medium leading-relaxed text-blue-100 xl:text-lg animate-fade-in-up" style={{animationDelay: '2.4s'}}>
+                  Experience <span className="font-bold text-white">intelligent task management</span> with 
+                  <span className="font-bold text-blue-200"> AI-powered insights</span>, beautiful design, and seamless workflows.
                 </p>
               </div>
 
               {/* Premium Stats/Features with Animated Counters */}
               <div className="grid grid-cols-3 gap-3 mb-8 animate-fade-in-up" style={{animationDelay: '2.8s'}}>
                 <div className="text-center group">
-                  <div className="flex flex-col items-center justify-center w-full transition-all duration-300 border shadow-lg h-14 rounded-xl bg-frost-white/10 backdrop-blur-sm border-frost-white/20 group-hover:scale-105 hover:shadow-xl">
-                    <div className="text-lg font-black text-frost-white animate-counter xl:text-xl" data-target="99">0</div>
-                    <div className="text-xs font-bold tracking-wide text-cloud-white/80">% UPTIME</div>
+                  <div className="flex flex-col items-center justify-center w-full transition-all duration-300 border shadow-lg h-14 rounded-xl bg-white/10 backdrop-blur-sm border-white/20 group-hover:scale-105 hover:shadow-xl hover:bg-white/15">
+                    <div className="text-lg font-black text-white animate-counter xl:text-xl" data-target="99">0</div>
+                    <div className="text-xs font-bold tracking-wide text-blue-100">% UPTIME</div>
                   </div>
                 </div>
                 <div className="text-center group">
-                  <div className="flex flex-col items-center justify-center w-full transition-all duration-300 border shadow-lg h-14 rounded-xl bg-frost-white/10 backdrop-blur-sm border-frost-white/20 group-hover:scale-105 hover:shadow-xl">
-                    <div className="text-lg font-black text-frost-white animate-counter xl:text-xl" data-target="24">0</div>
-                    <div className="text-xs font-bold tracking-wide text-cloud-white/80">/ 7 SUPPORT</div>
+                  <div className="flex flex-col items-center justify-center w-full transition-all duration-300 border shadow-lg h-14 rounded-xl bg-white/10 backdrop-blur-sm border-white/20 group-hover:scale-105 hover:shadow-xl hover:bg-white/15">
+                    <div className="text-lg font-black text-white animate-counter xl:text-xl" data-target="24">0</div>
+                    <div className="text-xs font-bold tracking-wide text-blue-100">/ 7 SUPPORT</div>
                   </div>
                 </div>
                 <div className="text-center group">
-                  <div className="flex flex-col items-center justify-center w-full transition-all duration-300 border shadow-lg h-14 rounded-xl bg-frost-white/10 backdrop-blur-sm border-frost-white/20 group-hover:scale-105 hover:shadow-xl">
-                    <div className="text-lg font-black text-frost-white animate-counter xl:text-xl" data-target="500">0</div>
-                    <div className="text-xs font-bold tracking-wide text-cloud-white/80">K+ USERS</div>
+                  <div className="flex flex-col items-center justify-center w-full transition-all duration-300 border shadow-lg h-14 rounded-xl bg-white/10 backdrop-blur-sm border-white/20 group-hover:scale-105 hover:shadow-xl hover:bg-white/15">
+                    <div className="text-lg font-black text-white animate-counter xl:text-xl" data-target="500">0</div>
+                    <div className="text-xs font-bold tracking-wide text-blue-100">K+ USERS</div>
                   </div>
                 </div>
               </div>
@@ -174,93 +174,93 @@ export default function LoginPage() {
             {/* Additional Features Section - Compact */}
             <div className="space-y-4">
               <div className="flex items-start gap-3 group">
-                <div className="flex items-center justify-center flex-shrink-0 w-10 h-10 transition-transform duration-300 rounded-lg bg-frost-white/10 backdrop-blur-sm group-hover:scale-110">
-                  <Sparkles className="w-5 h-5 text-frost-white" />
+                <div className="flex items-center justify-center flex-shrink-0 w-10 h-10 transition-transform duration-300 rounded-lg bg-white/10 backdrop-blur-sm group-hover:scale-110 group-hover:bg-white/15">
+                  <Sparkles className="w-5 h-5 text-white transition-colors group-hover:text-yellow-200" />
                 </div>
                 <div>
-                  <h3 className="mb-1 text-lg font-bold text-frost-white">AI-Powered Insights</h3>
-                  <p className="text-sm font-medium text-cloud-white/80">Smart task recommendations and productivity analytics</p>
+                  <h3 className="mb-1 text-lg font-bold text-white">AI-Powered Insights</h3>
+                  <p className="text-sm font-medium text-blue-100">Smart task recommendations and productivity analytics</p>
                 </div>
               </div>
 
               <div className="flex items-start gap-3 group">
-                <div className="flex items-center justify-center flex-shrink-0 w-10 h-10 transition-transform duration-300 rounded-lg bg-frost-white/10 backdrop-blur-sm group-hover:scale-110">
-                  <TrendingUp className="w-5 h-5 text-frost-white" />
+                <div className="flex items-center justify-center flex-shrink-0 w-10 h-10 transition-transform duration-300 rounded-lg bg-white/10 backdrop-blur-sm group-hover:scale-110 group-hover:bg-white/15">
+                  <TrendingUp className="w-5 h-5 text-white transition-colors group-hover:text-green-200" />
                 </div>
                 <div>
-                  <h3 className="mb-1 text-lg font-bold text-frost-white">Track Your Progress</h3>
-                  <p className="text-sm font-medium text-cloud-white/80">Real-time analytics and visual progress tracking</p>
+                  <h3 className="mb-1 text-lg font-bold text-white">Track Your Progress</h3>
+                  <p className="text-sm font-medium text-blue-100">Real-time analytics and visual progress tracking</p>
                 </div>
               </div>
 
               <div className="flex items-start gap-3 group">
-                <div className="flex items-center justify-center flex-shrink-0 w-10 h-10 transition-transform duration-300 rounded-lg bg-frost-white/10 backdrop-blur-sm group-hover:scale-110">
-                  <Zap className="w-5 h-5 text-frost-white" />
+                <div className="flex items-center justify-center flex-shrink-0 w-10 h-10 transition-transform duration-300 rounded-lg bg-white/10 backdrop-blur-sm group-hover:scale-110 group-hover:bg-white/15">
+                  <Zap className="w-5 h-5 text-white transition-colors group-hover:text-orange-200" />
                 </div>
                 <div>
-                  <h3 className="mb-1 text-lg font-bold text-frost-white">Lightning Fast</h3>
-                  <p className="text-sm font-medium text-cloud-white/80">Optimized performance for seamless productivity</p>
+                  <h3 className="mb-1 text-lg font-bold text-white">Lightning Fast</h3>
+                  <p className="text-sm font-medium text-blue-100">Optimized performance for seamless productivity</p>
                 </div>
               </div>
 
               <div className="flex items-start gap-3 group">
-                <div className="flex items-center justify-center flex-shrink-0 w-10 h-10 transition-transform duration-300 rounded-lg bg-frost-white/10 backdrop-blur-sm group-hover:scale-110">
-                  <Shield className="w-5 h-5 text-frost-white" />
+                <div className="flex items-center justify-center flex-shrink-0 w-10 h-10 transition-transform duration-300 rounded-lg bg-white/10 backdrop-blur-sm group-hover:scale-110 group-hover:bg-white/15">
+                  <Shield className="w-5 h-5 text-white transition-colors group-hover:text-emerald-200" />
                 </div>
                 <div>
-                  <h3 className="mb-1 text-lg font-bold text-frost-white">Secure & Private</h3>
-                  <p className="text-sm font-medium text-cloud-white/80">Your data is encrypted and protected</p>
+                  <h3 className="mb-1 text-lg font-bold text-white">Secure & Private</h3>
+                  <p className="text-sm font-medium text-blue-100">Your data is encrypted and protected</p>
                 </div>
               </div>
             </div>
 
             {/* Testimonial - Compact */}
-            <div className="p-4 border rounded-xl bg-frost-white/10 backdrop-blur-sm border-frost-white/20">
+            <div className="p-4 transition-colors border rounded-xl bg-white/10 backdrop-blur-sm border-white/20 hover:bg-white/15">
               <div className="flex items-center gap-2 mb-2">
                 {[1, 2, 3, 4, 5].map((star) => (
-                  <div key={star} className="w-4 h-4 text-warning-400">★</div>
+                  <div key={star} className="w-4 h-4 text-yellow-300">★</div>
                 ))}
               </div>
-              <p className="mb-2 text-sm italic font-medium text-frost-white">
+              <p className="mb-2 text-sm italic font-medium text-white">
                 &ldquo;NexTo transformed how I manage my daily tasks. The AI insights are game-changing!&rdquo;
               </p>
-              <p className="text-xs font-semibold text-cloud-white/70">— Sarah Chen, Product Manager</p>
+              <p className="text-xs font-semibold text-blue-200">— Sarah Chen, Product Manager</p>
             </div>
           </div>
         </div>
       </div>
 
       {/* RIGHT SIDE - Login Form Section */}
-      <div className="flex items-center justify-center w-full min-h-screen p-6 overflow-y-auto lg:w-1/2 xl:w-2/5 lg:p-8">
+      <div className="flex items-center justify-center w-full min-h-screen p-6 overflow-y-auto lg:w-1/2 xl:w-2/5 lg:p-8 bg-white/50 backdrop-blur-sm">
         <div className="w-full max-w-sm mx-auto">
           {/* Mobile Logo - Only show on mobile */}
           <div className="mb-6 text-center lg:hidden">
-            <h1 className="mb-2 text-3xl font-black gradient-text">NexTo</h1>
-            <p className="font-semibold text-slate-gray dark:text-cloud-gray">Premium Task Management</p>
+            <h1 className="mb-2 text-3xl font-black text-transparent bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text">NexTo</h1>
+            <p className="font-semibold text-slate-600">Premium Task Management</p>
           </div>
 
           {/* Login Card */}
-          <div className="p-6 border shadow-xl glass-morphism rounded-2xl border-white/20 dark:border-secondary-700/30 lg:p-8">
+          <div className="p-6 transition-all duration-300 border shadow-2xl bg-white/80 backdrop-blur-lg rounded-2xl border-gray-200/50 lg:p-8 hover:shadow-3xl">
             {/* Welcome Text */}
             <div className="mb-6">
-              <h2 className="mb-2 text-2xl font-bold lg:text-3xl gradient-text">Welcome Back!</h2>
-              <p className="font-medium text-slate-gray dark:text-cloud-gray">
+              <h2 className="mb-2 text-2xl font-bold text-transparent lg:text-3xl bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text">Welcome Back!</h2>
+              <p className="font-medium text-slate-600">
                 Sign in to continue your productivity journey
               </p>
             </div>
 
             {/* Error Alert */}
             {error && (
-              <div className="flex items-start gap-3 p-3 mb-4 border rounded-lg bg-error-500/10 border-error-500/20 animate-shake">
-                <AlertCircle className="w-4 h-4 text-error-500 flex-shrink-0 mt-0.5" />
-                <p className="text-sm font-medium text-error-600 dark:text-error-400">{error}</p>
+              <div className="flex items-start gap-3 p-3 mb-4 border border-red-200 rounded-lg bg-red-50 animate-shake">
+                <AlertCircle className="w-4 h-4 text-red-500 flex-shrink-0 mt-0.5" />
+                <p className="text-sm font-medium text-red-700">{error}</p>
               </div>
             )}
 
             {/* Demo Info */}
-            <div className="flex items-start gap-3 p-3 mb-6 border rounded-lg bg-accent-500/10 border-accent-500/20">
-              <CheckCircle className="w-4 h-4 text-accent-600 dark:text-accent-400 flex-shrink-0 mt-0.5" />
-              <div className="text-sm font-medium text-accent-700 dark:text-accent-300">
+            <div className="flex items-start gap-3 p-3 mb-6 border border-blue-200 rounded-lg bg-blue-50">
+              <CheckCircle className="w-4 h-4 text-blue-600 flex-shrink-0 mt-0.5" />
+              <div className="text-sm font-medium text-blue-800">
                 <p className="mb-1 font-bold">Demo Access</p>
                 <p>Email: Any valid email format</p>
                 <p>Password: Min 6 characters</p>
@@ -268,15 +268,15 @@ export default function LoginPage() {
             </div>
 
             {/* Login Form */}
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-5">
               {/* Email Field */}
               <div>
-                <label htmlFor="email" className="block mb-2 text-sm font-bold text-midnight-blue dark:text-frost-white">
+                <label htmlFor="email" className="block mb-2 text-sm font-bold text-slate-700">
                   Email Address
                 </label>
                 <div className="relative">
-                  <div className="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none">
-                    <Mail className="w-5 h-5 text-slate-gray dark:text-cloud-gray" />
+                  <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                    <Mail className="w-4 h-4 text-slate-400" />
                   </div>
                   <input
                     id="email"
@@ -284,7 +284,7 @@ export default function LoginPage() {
                     required
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="w-full py-4 pl-12 pr-4 text-base font-medium transition-all duration-300 border rounded-xl border-slate-gray/20 dark:border-secondary-700/30 bg-white/80 dark:bg-secondary-800/50 text-midnight-blue dark:text-frost-white placeholder-slate-gray/50 dark:placeholder-cloud-gray/50 focus:outline-none focus:ring-2 focus:ring-midnight-blue dark:focus:ring-accent-500 focus:border-transparent"
+                    className="w-full py-3 pl-10 pr-3 text-sm font-medium transition-all duration-300 border border-gray-300 rounded-lg bg-white/80 text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent hover:border-gray-400"
                     placeholder="you@example.com"
                   />
                 </div>
@@ -292,12 +292,12 @@ export default function LoginPage() {
 
               {/* Password Field */}
               <div>
-                <label htmlFor="password" className="block mb-2 text-sm font-bold text-midnight-blue dark:text-frost-white">
+                <label htmlFor="password" className="block mb-2 text-sm font-bold text-slate-700">
                   Password
                 </label>
                 <div className="relative">
-                  <div className="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none">
-                    <Lock className="w-5 h-5 text-slate-gray dark:text-cloud-gray" />
+                  <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                    <Lock className="w-4 h-4 text-slate-400" />
                   </div>
                   <input
                     id="password"
@@ -305,33 +305,33 @@ export default function LoginPage() {
                     required
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    className="w-full py-4 pl-12 pr-12 text-base font-medium transition-all duration-300 border rounded-xl border-slate-gray/20 dark:border-secondary-700/30 bg-white/80 dark:bg-secondary-800/50 text-midnight-blue dark:text-frost-white placeholder-slate-gray/50 dark:placeholder-cloud-gray/50 focus:outline-none focus:ring-2 focus:ring-midnight-blue dark:focus:ring-accent-500 focus:border-transparent"
+                    className="w-full py-3 pl-10 pr-10 text-sm font-medium transition-all duration-300 border border-gray-300 rounded-lg bg-white/80 text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent hover:border-gray-400"
                     placeholder="••••••••"
                   />
                   <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
-                    className="absolute inset-y-0 right-0 flex items-center pr-4 transition-colors text-slate-gray dark:text-cloud-gray hover:text-midnight-blue dark:hover:text-frost-white"
+                    className="absolute inset-y-0 right-0 flex items-center pr-3 transition-colors text-slate-400 hover:text-slate-600"
                   >
-                    {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
+                    {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                   </button>
                 </div>
               </div>
 
               {/* Remember & Forgot Password */}
-              <div className="flex items-center justify-between">
+              <div className="flex items-center justify-between text-sm">
                 <label className="flex items-center cursor-pointer group">
                   <input
                     type="checkbox"
-                    className="w-4 h-4 transition-all rounded border-slate-gray/30 text-midnight-blue focus:ring-2 focus:ring-midnight-blue focus:ring-offset-0"
+                    className="w-4 h-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500 focus:ring-2"
                   />
-                  <span className="ml-2 text-sm font-medium transition-colors text-slate-gray dark:text-cloud-gray group-hover:text-midnight-blue dark:group-hover:text-frost-white">
+                  <span className="ml-2 font-medium transition-colors text-slate-600 group-hover:text-slate-800">
                     Remember me
                   </span>
                 </label>
                 <button
                   type="button"
-                  className="text-sm font-bold transition-all text-midnight-blue dark:text-accent-400 hover:underline"
+                  className="font-bold text-indigo-600 transition-all hover:text-indigo-800 hover:underline"
                 >
                   Forgot password?
                 </button>
@@ -341,29 +341,29 @@ export default function LoginPage() {
               <button
                 type="submit"
                 disabled={isLoading}
-                className="w-full py-4 px-6 rounded-xl bg-gradient-to-r from-midnight-blue to-accent-500 dark:from-accent-500 dark:to-accent-600 text-frost-white font-bold text-lg shadow-glow hover:shadow-2xl hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 flex items-center justify-center gap-2 button-premium"
+                className="w-full py-3 px-4 rounded-lg bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-bold shadow-lg hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 flex items-center justify-center gap-2 hover:from-indigo-700 hover:to-purple-700"
               >
                 {isLoading ? (
                   <>
-                    <div className="w-5 h-5 border-2 rounded-full border-frost-white/30 border-t-frost-white animate-spin"></div>
+                    <div className="w-4 h-4 border-2 rounded-full border-white/30 border-t-white animate-spin"></div>
                     <span>Signing In...</span>
                   </>
                 ) : (
                   <>
                     <span>Sign In to NexTo</span>
-                    <ArrowRight className="w-5 h-5" />
+                    <ArrowRight className="w-4 h-4" />
                   </>
                 )}
               </button>
             </form>
 
             {/* Divider */}
-            <div className="relative my-8">
+            <div className="relative my-6">
               <div className="absolute inset-0 flex items-center">
-                <div className="w-full border-t border-slate-gray/20 dark:border-secondary-700/30"></div>
+                <div className="w-full border-t border-gray-300"></div>
               </div>
               <div className="relative flex justify-center text-sm">
-                <span className="px-4 font-semibold bg-frost-white/80 dark:bg-secondary-800/80 text-slate-gray dark:text-cloud-gray">
+                <span className="px-3 font-semibold bg-white text-slate-600">
                   New to NexTo?
                 </span>
               </div>
@@ -372,18 +372,18 @@ export default function LoginPage() {
             {/* Sign Up Link */}
             <button
               type="button"
-              className="flex items-center justify-center w-full gap-2 px-6 py-4 text-lg font-bold transition-all duration-300 border-2 rounded-xl border-midnight-blue dark:border-accent-500 text-midnight-blue dark:text-accent-400 hover:bg-midnight-blue dark:hover:bg-accent-500 hover:text-frost-white"
+              className="flex items-center justify-center w-full gap-2 px-4 py-3 font-bold text-indigo-600 transition-all duration-300 border-2 border-indigo-600 rounded-lg hover:bg-indigo-600 hover:text-white hover:shadow-lg"
             >
               <span>Create an Account</span>
-              <Sparkles className="w-5 h-5" />
+              <Sparkles className="w-4 h-4" />
             </button>
           </div>
 
           {/* Security Badge */}
-          <div className="mt-8 text-center">
-            <div className="inline-flex items-center gap-2 px-4 py-2 border rounded-full glass-morphism border-white/20 dark:border-secondary-700/30">
-              <Shield className="w-4 h-4 text-success-500" />
-              <span className="text-xs font-semibold text-slate-gray dark:text-cloud-gray">256-bit Secure Encryption</span>
+          <div className="mt-6 text-center">
+            <div className="inline-flex items-center gap-2 px-3 py-2 border border-gray-200 rounded-full bg-white/60 backdrop-blur-sm">
+              <Shield className="w-3 h-3 text-emerald-500" />
+              <span className="text-xs font-semibold text-slate-600">256-bit Secure Encryption</span>
             </div>
           </div>
         </div>
