@@ -19,12 +19,9 @@ export default function LoginPage() {
 
   useEffect(() => {
     setMounted(true)
-    // Check for dark mode preference
-    const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches
-    setIsDarkMode(isDark)
-    if (isDark) {
-      document.documentElement.classList.add('dark')
-    }
+    // Default to light theme
+    setIsDarkMode(false)
+    document.documentElement.classList.remove('dark')
 
     // Redirect if already authenticated
     if (isAuthenticated) {

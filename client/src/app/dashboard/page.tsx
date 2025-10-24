@@ -32,9 +32,9 @@ export default function Dashboard() {
 
     loadTasks()
     
-    // Check for dark mode preference
-    const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches
-    setIsDarkMode(isDark)
+    // Default to light theme
+    setIsDarkMode(false)
+    document.documentElement.classList.remove('dark')
   }, [isAuthenticated, loadTasks, router])
 
   const toggleDarkMode = () => {
