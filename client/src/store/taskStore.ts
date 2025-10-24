@@ -33,9 +33,10 @@ export const useTaskStore = create<TaskStore>((set, get) => ({
   addTask: async (taskData) => {
     set({ isLoading: true, error: null })
     try {
-      console.log('TaskStore: Sending POST request to /api/tasks with:', taskData)
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api'
+      console.log('TaskStore: Sending POST request to', `${apiUrl}/tasks`, 'with:', taskData)
       
-      const response = await fetch('/api/tasks', {
+      const response = await fetch(`${apiUrl}/tasks`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(taskData),
@@ -70,7 +71,8 @@ export const useTaskStore = create<TaskStore>((set, get) => ({
   updateTask: async (id, updates) => {
     set({ isLoading: true, error: null })
     try {
-      const response = await fetch(`/api/tasks/${id}`, {
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api'
+      const response = await fetch(`${apiUrl}/tasks/${id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(updates),
@@ -96,7 +98,8 @@ export const useTaskStore = create<TaskStore>((set, get) => ({
   deleteTask: async (id) => {
     set({ isLoading: true, error: null })
     try {
-      const response = await fetch(`/api/tasks/${id}`, {
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api'
+      const response = await fetch(`${apiUrl}/tasks/${id}`, {
         method: 'DELETE',
       })
       
@@ -124,9 +127,10 @@ export const useTaskStore = create<TaskStore>((set, get) => ({
   loadTasks: async () => {
     set({ isLoading: true, error: null })
     try {
-      console.log('TaskStore: Loading tasks from /api/tasks')
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api'
+      console.log('TaskStore: Loading tasks from', `${apiUrl}/tasks`)
       
-      const response = await fetch('/api/tasks')
+      const response = await fetch(`${apiUrl}/tasks`)
       
       console.log('TaskStore: Load tasks response status:', response.status)
       

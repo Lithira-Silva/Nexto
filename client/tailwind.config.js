@@ -19,7 +19,6 @@ module.exports = {
         'obsidian-black': '#0F172A',
         'cloud-gray': '#D1D5DB',
         
-        // Extended palette variations
         primary: {
           50: '#f0f4f8',
           100: '#d9e2ec',
@@ -30,7 +29,7 @@ module.exports = {
           600: '#486581',
           700: '#334e68',
           800: '#243b53',
-          900: '#1A2533', // midnight-blue
+          900: '#1A2533',
           950: '#102a43',
         },
         
@@ -40,7 +39,7 @@ module.exports = {
           200: '#e2e8f0',
           300: '#cbd5e1',
           400: '#94a3b8',
-          500: '#64748B', // slate-gray
+          500: '#64748B',
           600: '#475569',
           700: '#334155',
           800: '#1e293b',
@@ -52,7 +51,7 @@ module.exports = {
           100: '#ccfbf1',
           200: '#99f6e4',
           300: '#5eead4',
-          400: '#2DD4BF', // emerald-green
+          400: '#2DD4BF',
           500: '#14b8a6',
           600: '#0d9488',
           700: '#0f766e',
@@ -66,7 +65,7 @@ module.exports = {
           200: '#fed7aa',
           300: '#fdba74',
           400: '#fb923c',
-          500: '#F97316', // sunset-orange
+          500: '#F97316',
           600: '#ea580c',
           700: '#c2410c',
           800: '#9a3412',
@@ -78,20 +77,13 @@ module.exports = {
           100: '#f3e8ff',
           200: '#e9d5ff',
           300: '#d8b4fe',
-          400: '#A78BFA', // lavender-glow
+          400: '#A78BFA',
           500: '#8b5cf6',
           600: '#7c3aed',
           700: '#6d28d9',
           800: '#5b21b6',
           900: '#4c1d95',
         },
-        
-        // Legacy colors for backward compatibility
-        'nexto-primary': '#1A2533',
-        'nexto-secondary': '#64748B',
-        'nexto-accent': '#A78BFA',
-        'nexto-light': '#F7F9FC',
-        'nexto-dark': '#0F172A',
       },
       
       backgroundImage: {
@@ -104,21 +96,12 @@ module.exports = {
         'accent-gradient': 'linear-gradient(135deg, #A78BFA 0%, #8b5cf6 100%)',
       },
       
-      fontFamily: {
-        'inter': ['Inter', 'system-ui', 'sans-serif'],
-        'space': ['Space Grotesk', 'system-ui', 'sans-serif'],
-      },
-      
       animation: {
         'fade-in': 'fadeIn 0.5s ease-in-out',
         'slide-up': 'slideUp 0.3s ease-out',
         'slide-down': 'slideDown 0.3s ease-out',
         'scale-up': 'scaleUp 0.2s ease-out',
-        'bounce-gentle': 'bounceGentle 0.6s ease-out',
-        'glow': 'glow 2s ease-in-out infinite alternate',
         'float': 'float 3s ease-in-out infinite',
-        'pulse-success': 'pulseSuccess 2s ease-in-out infinite',
-        'pulse-warning': 'pulseWarning 2s ease-in-out infinite',
       },
       
       keyframes: {
@@ -138,26 +121,9 @@ module.exports = {
           '0%': { transform: 'scale(0.95)', opacity: '0' },
           '100%': { transform: 'scale(1)', opacity: '1' },
         },
-        bounceGentle: {
-          '0%, 20%, 50%, 80%, 100%': { transform: 'translateY(0)' },
-          '40%': { transform: 'translateY(-4px)' },
-          '60%': { transform: 'translateY(-2px)' },
-        },
-        glow: {
-          '0%': { boxShadow: '0 0 5px rgba(167, 139, 250, 0.2)' },
-          '100%': { boxShadow: '0 0 20px rgba(167, 139, 250, 0.4), 0 0 30px rgba(167, 139, 250, 0.2)' },
-        },
         float: {
           '0%, 100%': { transform: 'translateY(0px)' },
           '50%': { transform: 'translateY(-4px)' },
-        },
-        pulseSuccess: {
-          '0%, 100%': { boxShadow: '0 0 5px rgba(45, 212, 191, 0.3)' },
-          '50%': { boxShadow: '0 0 20px rgba(45, 212, 191, 0.6), 0 0 30px rgba(45, 212, 191, 0.3)' },
-        },
-        pulseWarning: {
-          '0%, 100%': { boxShadow: '0 0 5px rgba(249, 115, 22, 0.3)' },
-          '50%': { boxShadow: '0 0 20px rgba(249, 115, 22, 0.6), 0 0 30px rgba(249, 115, 22, 0.3)' },
         },
       },
       
@@ -165,14 +131,6 @@ module.exports = {
         'modern': '0 4px 6px -1px rgba(26, 37, 51, 0.1), 0 2px 4px -1px rgba(26, 37, 51, 0.06)',
         'modern-lg': '0 10px 15px -3px rgba(26, 37, 51, 0.1), 0 4px 6px -2px rgba(26, 37, 51, 0.05)',
         'modern-xl': '0 20px 25px -5px rgba(26, 37, 51, 0.1), 0 10px 10px -5px rgba(26, 37, 51, 0.04)',
-        'success-glow': '0 0 10px rgba(45, 212, 191, 0.3)',
-        'warning-glow': '0 0 10px rgba(249, 115, 22, 0.3)',
-        'accent-glow': '0 0 10px rgba(167, 139, 250, 0.3)',
-        'dark-modern': '0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2)',
-      },
-      
-      backdropBlur: {
-        xs: '2px',
       },
     },
   },

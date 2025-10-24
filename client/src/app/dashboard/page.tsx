@@ -1,19 +1,21 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { Calendar, List, Moon, Sun } from 'lucide-react'
+import { useRouter } from 'next/navigation'
+import { Calendar, List, Moon, Sun, LogOut, User } from 'lucide-react'
 import TaskList from '@/components/TaskList'
 import TaskForm from '@/components/TaskForm'
 import TaskCalendar from '@/components/TaskCalendar'
 import TaskAnalytics from '@/components/TaskAnalytics'
-import Header from '@/components/Header'
-import ThemeToggle from '@/components/ThemeToggle'
 import AIInsights from '@/components/AIInsights'
 import { useTaskStore } from '@/store/taskStore'
+import { useAuthStore } from '@/store/authStore'
 
 type ViewMode = 'list' | 'calendar'
 
-export default function Home() {
+export default function Dashboard() {
+  const router = useRouter()
+  const { user, isAuthenticated, logout } = useAuthStore()
   const { tasks, loadTasks, isLoading } = useTaskStore()
   const [mounted, setMounted] = useState(false)
   const [viewMode, setViewMode] = useState<ViewMode>('list')
@@ -21,41 +23,72 @@ export default function Home() {
 
   useEffect(() => {
     setMounted(true)
+    
+    // Check authentication
+    if (!isAuthenticated) {
+      router.push('/login')
+      return
+    }
+
     loadTasks()
     
     // Check for dark mode preference
     const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches
     setIsDarkMode(isDark)
-  }, [loadTasks])
+  }, [isAuthenticated, loadTasks, router])
 
   const toggleDarkMode = () => {
     setIsDarkMode(!isDarkMode)
     document.documentElement.classList.toggle('dark')
   }
 
-  if (!mounted) {
-    return null // Avoid hydration mismatch
+  const handleLogout = () => {
+    logout()
+    router.push('/login')
+  }
+
+  if (!mounted || !isAuthenticated) {
+    return null // Avoid hydration mismatch and unauthorized access
   }
 
   return (
     <div className="min-h-screen passionate-scroll smooth-scroll">
-      {/* Hero Section */}
+      {/* Hero Section with User Info */}
       <div className="relative overflow-hidden">
         {/* Background Elements */}
         <div className="absolute inset-0 bg-gradient-to-br from-frost-white via-cloud-white to-lavender-glow/20 dark:from-obsidian-black dark:via-secondary-900 dark:to-accent-900/10"></div>
         
         <div className="relative px-4 py-4 pt-8">
-          <div className="max-w-7xl mx-auto">
-            <Header />
+          <div className="mx-auto max-w-7xl">
+            {/* User Header */}
+            <div className="flex items-center justify-between mb-8">
+              <div className="flex items-center gap-4">
+                <div className="glass-morphism rounded-2xl p-4 border border-white/20 dark:border-secondary-700/30 shadow-xl">
+                  <User className="w-8 h-8 text-midnight-blue dark:text-accent-400" />
+                </div>
+                <div>
+                  <h1 className="text-3xl font-bold gradient-text">Welcome back, {user?.name}!</h1>
+                  <p className="text-slate-gray dark:text-cloud-gray font-medium">{user?.email}</p>
+                </div>
+              </div>
+              
+              <button
+                onClick={handleLogout}
+                className="flex items-center gap-2 px-6 py-3 rounded-xl glass-morphism border border-white/20 dark:border-secondary-700/30 text-slate-gray dark:text-cloud-gray hover:text-error-500 dark:hover:text-error-400 hover:border-error-500/50 transition-all duration-300 button-premium shadow-xl"
+              >
+                <LogOut className="w-5 h-5" />
+                <span className="font-semibold">Logout</span>
+              </button>
+            </div>
           </div>
         </div>
       </div>
 
       {/* Navigation Controls - Centered above tasks */}
       <div className="relative px-4 pb-8">
-        <div className="max-w-7xl mx-auto">
+        <div className="mx-auto max-w-7xl">
           <div className="flex justify-center mb-8">
-            <div className="glass-morphism rounded-3xl p-3 border border-white/20 dark:border-secondary-700/30 shadow-2xl backdrop-blur-xl">
+            <div className="p-3 border shadow-2xl glass-morphism rounded-3xl border-white/20 dark:border-secondary-700/30 backdrop-blur-xl">
               <div className="flex items-center gap-4">
                 
                 {/* View Mode Toggle */}
@@ -95,7 +128,7 @@ export default function Home() {
                 {/* Dark Mode Toggle */}
                 <button
                   onClick={toggleDarkMode}
-                  className="w-12 h-12 rounded-xl glass-morphism flex items-center justify-center text-slate-gray dark:text-cloud-gray hover:text-midnight-blue dark:hover:text-frost-white transition-all duration-300 button-premium focus-ring border border-white/10 dark:border-secondary-700/20"
+                  className="flex items-center justify-center w-12 h-12 transition-all duration-300 border rounded-xl glass-morphism text-slate-gray dark:text-cloud-gray hover:text-midnight-blue dark:hover:text-frost-white button-premium focus-ring border-white/10 dark:border-secondary-700/20"
                   aria-label="Toggle theme"
                 >
                   {isDarkMode ? (
@@ -112,12 +145,12 @@ export default function Home() {
 
       {/* Main Content */}
       <div className="relative px-4 py-8 bg-gradient-to-b from-transparent to-cloud-white/30 dark:to-secondary-900/30">
-        <div className="max-w-7xl mx-auto">
+        <div className="mx-auto max-w-7xl">
           {viewMode === 'list' ? (
             /* List View Layout */
-            <div className="grid grid-cols-1 xl:grid-cols-3 gap-8 slide-in-bottom">
+            <div className="grid grid-cols-1 gap-8 xl:grid-cols-3 slide-in-bottom">
               {/* Task Creation Form */}
-              <div className="xl:col-span-1 space-y-6">
+              <div className="space-y-6 xl:col-span-1">
                 <div className="sticky top-8">
                   <TaskForm />
                 </div>
@@ -139,7 +172,7 @@ export default function Home() {
               {/* AI Insights */}
               <AIInsights />
               
-              <div className="grid grid-cols-1 xl:grid-cols-4 gap-8">
+              <div className="grid grid-cols-1 gap-8 xl:grid-cols-4">
                 {/* Task Creation Form */}
                 <div className="xl:col-span-1">
                   <div className="sticky top-8">
@@ -159,19 +192,19 @@ export default function Home() {
           <footer className="mt-20 text-center slide-in-bottom">
             <div className="relative">
               {/* Decorative background */}
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-midnight-blue/5 dark:via-accent-500/5 to-transparent h-px top-1/2"></div>
+              <div className="absolute inset-0 h-px bg-gradient-to-r from-transparent via-midnight-blue/5 dark:via-accent-500/5 to-transparent top-1/2"></div>
               
-              <div className="relative inline-flex items-center gap-3 px-8 py-4 glass-morphism rounded-2xl border border-white/20 dark:border-secondary-700/30 shadow-2xl">
+              <div className="relative inline-flex items-center gap-3 px-8 py-4 border shadow-2xl glass-morphism rounded-2xl border-white/20 dark:border-secondary-700/30">
                 <div className="flex items-center gap-2">
-                  <div className="w-2 h-2 bg-success-500 rounded-full animate-pulse"></div>
-                  <span className="text-slate-gray dark:text-cloud-gray text-sm font-medium">Built with</span>
+                  <div className="w-2 h-2 rounded-full bg-success-500 animate-pulse"></div>
+                  <span className="text-sm font-medium text-slate-gray dark:text-cloud-gray">Built with</span>
                 </div>
                 <div className="flex items-center gap-1">
                   <span className="font-bold gradient-text">Next.js</span>
-                  <span className="text-slate-gray dark:text-cloud-gray text-sm">&</span>
+                  <span className="text-sm text-slate-gray dark:text-cloud-gray">&</span>
                   <span className="font-bold gradient-text">Premium Design</span>
                 </div>
-                <div className="w-2 h-2 bg-gradient-to-r from-midnight-blue to-accent-500 rounded-full animate-bounce"></div>
+                <div className="w-2 h-2 rounded-full bg-gradient-to-r from-midnight-blue to-accent-500 animate-bounce"></div>
               </div>
 
               {/* Floating elements */}
