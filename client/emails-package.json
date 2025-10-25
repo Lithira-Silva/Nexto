@@ -1,0 +1,5 @@
+{
+  "scripts": {
+    "email": "email dev --dir src/components/emails --port 3001"
+  }
+}

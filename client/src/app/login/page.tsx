@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
+import Link from 'next/link'
 import { signIn, getSession } from 'next-auth/react'
 import { FaGoogle, FaFacebook } from 'react-icons/fa'
 import { Mail, Lock, ArrowRight, AlertCircle, CheckCircle, Eye, EyeOff, Sparkles, TrendingUp, Zap, Shield, CheckSquare, Crown } from 'lucide-react'
@@ -376,12 +377,12 @@ export default function LoginPage() {
                     Remember me
                   </span>
                 </label>
-                <button
-                  type="button"
+                <Link
+                  href="/forgot-password"
                   className="font-bold text-purple-600 transition-all hover:text-purple-800 hover:underline"
                 >
                   Forgot password?
-                </button>
+                </Link>
               </div>
 
               {/* Submit Button */}
@@ -458,13 +459,15 @@ export default function LoginPage() {
             </div>
 
             {/* Sign Up Link */}
-            <button
-              type="button"
-              className="flex items-center justify-center w-full gap-2 px-4 py-3 font-bold text-purple-600 transition-all duration-300 border-2 border-purple-600 rounded-lg hover:bg-purple-600 hover:text-white hover:shadow-lg"
-            >
-              <span>Create an Account</span>
-              <Sparkles className="w-4 h-4" />
-            </button>
+            <Link href="/signup">
+              <button
+                type="button"
+                className="flex items-center justify-center w-full gap-2 px-4 py-3 font-bold text-purple-600 transition-all duration-300 border-2 border-purple-600 rounded-lg hover:bg-purple-600 hover:text-white hover:shadow-lg"
+              >
+                <span>Create an Account</span>
+                <Sparkles className="w-4 h-4" />
+              </button>
+            </Link>
           </div>
 
           {/* Security Badge */}
