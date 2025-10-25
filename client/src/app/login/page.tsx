@@ -2,6 +2,8 @@
 
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
+import { signIn, getSession } from 'next-auth/react'
+import { FaGoogle, FaFacebook } from 'react-icons/fa'
 import { Mail, Lock, ArrowRight, AlertCircle, CheckCircle, Eye, EyeOff, Sparkles, TrendingUp, Zap, Shield, CheckSquare, Crown } from 'lucide-react'
 import { useAuthStore } from '@/store/authStore'
 
@@ -15,6 +17,10 @@ export default function LoginPage() {
   const [error, setError] = useState('')
   const [isLoading, setIsLoading] = useState(false)
   const [isDarkMode, setIsDarkMode] = useState(false)
+
+  // Check if OAuth is configured
+  const isGoogleConfigured = process.env.NEXT_PUBLIC_GOOGLE_OAUTH_ENABLED === 'true'
+  const isFacebookConfigured = process.env.NEXT_PUBLIC_FACEBOOK_OAUTH_ENABLED === 'true'
 
   useEffect(() => {
     setMounted(true)
@@ -70,19 +76,55 @@ export default function LoginPage() {
     }
   }
 
+  const handleGoogleSignIn = async () => {
+    try {
+      setError('')
+      const result = await signIn('google', {
+        callbackUrl: '/dashboard',
+        redirect: false,
+      })
+      
+      if (result?.error) {
+        setError('Google sign-in failed. Please try again.')
+      } else if (result?.url) {
+        router.push('/dashboard')
+      }
+    } catch (err) {
+      setError('Google sign-in failed. Please try again.')
+    }
+  }
+
+  const handleFacebookSignIn = async () => {
+    try {
+      setError('')
+      const result = await signIn('facebook', {
+        callbackUrl: '/dashboard',
+        redirect: false,
+      })
+      
+      if (result?.error) {
+        setError('Facebook sign-in failed. Please try again.')
+      } else if (result?.url) {
+        router.push('/dashboard')
+      }
+    } catch (err) {
+      setError('Facebook sign-in failed. Please try again.')
+    }
+  }
+
   if (!mounted) {
     return null
   }
 
   return (
-    <div className="flex max-h-screen min-h-screen overflow-hidden passionate-scroll smooth-scroll bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 dark:from-slate-900 dark:via-slate-800 dark:to-indigo-950">
+    <div className="flex max-h-screen min-h-screen overflow-hidden passionate-scroll smooth-scroll bg-gradient-to-br from-slate-100 via-purple-50 to-purple-100 dark:from-purple-900 dark:via-purple-800 dark:to-purple-950">
       {/* LEFT SIDE - Brand & Header Section */}
-      <div className="relative hidden overflow-y-auto lg:flex lg:w-1/2 xl:w-3/5 bg-gradient-to-br from-indigo-600 via-purple-600 to-blue-600 dark:from-indigo-900 dark:via-purple-900 dark:to-blue-900">
+      <div className="relative hidden overflow-y-auto lg:flex lg:w-1/2 xl:w-3/5 bg-gradient-to-br from-purple-600 via-purple-700 to-purple-800 dark:from-purple-900 dark:via-purple-800 dark:to-purple-950">
         {/* Animated Background Effects - Fixed positioning */}
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute w-64 h-64 rounded-full top-10 left-10 bg-white/10 blur-3xl animate-pulse-gentle"></div>
-          <div className="absolute rounded-full bottom-10 right-10 w-80 h-80 bg-blue-400/20 blur-3xl animate-pulse-gentle" style={{ animationDelay: '1s' }}></div>
-          <div className="absolute transform -translate-x-1/2 -translate-y-1/2 rounded-full top-1/2 left-1/2 w-96 h-96 bg-purple-400/10 blur-3xl"></div>
+          <div className="absolute rounded-full bottom-10 right-10 w-80 h-80 bg-purple-400/20 blur-3xl animate-pulse-gentle" style={{ animationDelay: '1s' }}></div>
+          <div className="absolute transform -translate-x-1/2 -translate-y-1/2 rounded-full top-1/2 left-1/2 w-96 h-96 bg-purple-500/15 blur-3xl"></div>
         </div>
 
         {/* Content Container with proper padding and scrolling */}
@@ -94,7 +136,7 @@ export default function LoginPage() {
               <div className="flex items-center gap-4 mb-8 group">
                 <div className="relative">
                   {/* Animated Glow Ring - Enhanced colors */}
-                  <div className="absolute inset-0 transition-all duration-700 bg-gradient-to-r from-white/20 via-blue-300/30 to-purple-300/30 rounded-2xl blur-lg animate-pulse-glow group-hover:animate-spin-slow"></div>
+                  <div className="absolute inset-0 transition-all duration-700 bg-gradient-to-r from-white/20 via-purple-300/30 to-purple-400/30 rounded-2xl blur-lg animate-pulse-glow group-hover:animate-spin-slow"></div>
                   
                   {/* Main Logo Container - Enhanced colors */}
                   <div className="relative flex items-center justify-center w-16 h-16 transition-all duration-500 border shadow-xl rounded-2xl bg-gradient-to-br from-white/15 to-white/5 backdrop-blur-lg border-white/20 group-hover:scale-110">
@@ -130,7 +172,7 @@ export default function LoginPage() {
                       PREMIUM TASK MANAGEMENT
                     </p>
                     {/* Animated Underline - Enhanced colors */}
-                    <div className="absolute -bottom-0.5 left-0 h-0.5 bg-gradient-to-r from-white via-blue-300 to-purple-300 animate-expand-width" style={{animationDelay: '1s'}}></div>
+                    <div className="absolute -bottom-0.5 left-0 h-0.5 bg-gradient-to-r from-white via-purple-300 to-purple-400 animate-expand-width" style={{animationDelay: '1s'}}></div>
                   </div>
                 </div>
               </div>
@@ -140,9 +182,9 @@ export default function LoginPage() {
                 <h2 className="mb-3 text-2xl font-bold leading-tight text-white xl:text-3xl">
                   <span className="inline-block animate-typewriter">Welcome to the Future</span>
                   <br />
-                  <span className="inline-block text-blue-200 animate-typewriter" style={{animationDelay: '1.8s'}}>of Productivity</span>
+                  <span className="inline-block text-purple-200 animate-typewriter" style={{animationDelay: '1.8s'}}>of Productivity</span>
                 </h2>
-                <p className="text-base font-medium leading-relaxed text-blue-100 xl:text-lg animate-fade-in-up" style={{animationDelay: '2.4s'}}>
+                <p className="text-base font-medium leading-relaxed text-purple-100 xl:text-lg animate-fade-in-up" style={{animationDelay: '2.4s'}}>
                   Experience <span className="font-bold text-white">intelligent task management</span> with 
                   <span className="font-bold text-blue-200"> AI-powered insights</span>, beautiful design, and seamless workflows.
                 </p>
@@ -231,19 +273,19 @@ export default function LoginPage() {
       </div>
 
       {/* RIGHT SIDE - Login Form Section */}
-      <div className="flex items-center justify-center w-full min-h-screen p-6 overflow-y-auto lg:w-1/2 xl:w-2/5 lg:p-8 bg-white/50 backdrop-blur-sm">
+      <div className="flex items-center justify-center w-full min-h-screen p-6 overflow-y-auto lg:w-1/2 xl:w-2/5 lg:p-8 bg-gradient-to-br from-slate-50/80 via-stone-50/70 to-purple-50/60 backdrop-blur-sm">
         <div className="w-full max-w-sm mx-auto">
           {/* Mobile Logo - Only show on mobile */}
           <div className="mb-6 text-center lg:hidden">
-            <h1 className="mb-2 text-3xl font-black text-transparent bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text">NexTo</h1>
+            <h1 className="mb-2 text-3xl font-black text-transparent bg-gradient-to-r from-purple-600 to-purple-800 bg-clip-text">NexTo</h1>
             <p className="font-semibold text-slate-600">Premium Task Management</p>
           </div>
 
           {/* Login Card */}
-          <div className="p-6 transition-all duration-300 border shadow-2xl bg-white/80 backdrop-blur-lg rounded-2xl border-gray-200/50 lg:p-8 hover:shadow-3xl">
+          <div className="p-6 transition-all duration-300 border shadow-2xl bg-slate-50/60 backdrop-blur-lg rounded-2xl border-gray-200/30 lg:p-8 hover:shadow-3xl">
             {/* Welcome Text */}
             <div className="mb-6">
-              <h2 className="mb-2 text-2xl font-bold text-transparent lg:text-3xl bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text">Welcome Back!</h2>
+              <h2 className="mb-2 text-2xl font-bold text-transparent lg:text-3xl bg-gradient-to-r from-purple-600 to-purple-800 bg-clip-text">Welcome Back!</h2>
               <p className="font-medium text-slate-600">
                 Sign in to continue your productivity journey
               </p>
@@ -284,7 +326,7 @@ export default function LoginPage() {
                     required
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="w-full py-3 pl-10 pr-3 text-sm font-medium transition-all duration-300 border border-gray-300 rounded-lg bg-white/80 text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent hover:border-gray-400"
+                    className="w-full py-3 pl-10 pr-3 text-sm font-medium transition-all duration-300 border border-gray-300 rounded-lg bg-slate-50/70 text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent hover:border-gray-400"
                     placeholder="you@example.com"
                   />
                 </div>
@@ -305,15 +347,20 @@ export default function LoginPage() {
                     required
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    className="w-full py-3 pl-10 pr-10 text-sm font-medium transition-all duration-300 border border-gray-300 rounded-lg bg-white/80 text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent hover:border-gray-400"
+                    className="w-full py-3 pl-10 pr-12 text-sm font-medium transition-all duration-300 border border-gray-300 rounded-lg bg-slate-50/70 text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent hover:border-gray-400"
                     placeholder="••••••••"
                   />
                   <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
-                    className="absolute inset-y-0 right-0 flex items-center pr-3 transition-colors text-slate-400 hover:text-slate-600"
+                    className="absolute inset-y-0 right-0 z-10 flex items-center pr-3 transition-colors text-slate-400 hover:text-slate-600 focus:outline-none focus:text-purple-500"
+                    aria-label={showPassword ? "Hide password" : "Show password"}
                   >
-                    {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+                    {showPassword ? (
+                      <EyeOff className="w-5 h-5 transition-all duration-200" />
+                    ) : (
+                      <Eye className="w-5 h-5 transition-all duration-200" />
+                    )}
                   </button>
                 </div>
               </div>
@@ -323,7 +370,7 @@ export default function LoginPage() {
                 <label className="flex items-center cursor-pointer group">
                   <input
                     type="checkbox"
-                    className="w-4 h-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500 focus:ring-2"
+                    className="w-4 h-4 text-purple-600 border-gray-300 rounded focus:ring-purple-500 focus:ring-2"
                   />
                   <span className="ml-2 font-medium transition-colors text-slate-600 group-hover:text-slate-800">
                     Remember me
@@ -331,7 +378,7 @@ export default function LoginPage() {
                 </label>
                 <button
                   type="button"
-                  className="font-bold text-indigo-600 transition-all hover:text-indigo-800 hover:underline"
+                  className="font-bold text-purple-600 transition-all hover:text-purple-800 hover:underline"
                 >
                   Forgot password?
                 </button>
@@ -341,7 +388,7 @@ export default function LoginPage() {
               <button
                 type="submit"
                 disabled={isLoading}
-                className="w-full py-3 px-4 rounded-lg bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-bold shadow-lg hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 flex items-center justify-center gap-2 hover:from-indigo-700 hover:to-purple-700"
+                className="w-full py-3 px-4 rounded-lg bg-gradient-to-r from-purple-600 to-purple-800 text-white font-bold shadow-lg hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 flex items-center justify-center gap-2 hover:from-purple-700 hover:to-purple-900"
               >
                 {isLoading ? (
                   <>
@@ -356,6 +403,47 @@ export default function LoginPage() {
                 )}
               </button>
             </form>
+
+            {/* OAuth Buttons - Only show if configured */}
+            {(isGoogleConfigured || isFacebookConfigured) && (
+              <div className="mt-6 space-y-3">
+                {/* OR Divider */}
+                <div className="relative">
+                  <div className="absolute inset-0 flex items-center">
+                    <div className="w-full border-t border-gray-300/50"></div>
+                  </div>
+                  <div className="relative flex justify-center text-xs">
+                    <span className="px-3 font-medium bg-slate-50/60 text-slate-500">
+                      Or continue with
+                    </span>
+                  </div>
+                </div>
+
+                {/* Google Sign In */}
+                {isGoogleConfigured && (
+                  <button
+                    type="button"
+                    onClick={handleGoogleSignIn}
+                    className="flex items-center justify-center w-full gap-3 px-4 py-3 text-sm font-medium transition-all duration-300 border border-gray-300 rounded-lg bg-white/70 text-slate-700 hover:bg-white hover:shadow-md hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2"
+                  >
+                    <FaGoogle className="w-4 h-4 text-red-500" />
+                    <span>Continue with Google</span>
+                  </button>
+                )}
+
+                {/* Facebook Sign In */}
+                {isFacebookConfigured && (
+                  <button
+                    type="button"
+                    onClick={handleFacebookSignIn}
+                    className="flex items-center justify-center w-full gap-3 px-4 py-3 text-sm font-medium transition-all duration-300 border border-gray-300 rounded-lg bg-white/70 text-slate-700 hover:bg-white hover:shadow-md hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2"
+                  >
+                    <FaFacebook className="w-4 h-4 text-blue-600" />
+                    <span>Continue with Facebook</span>
+                  </button>
+                )}
+              </div>
+            )}
 
             {/* Divider */}
             <div className="relative my-6">
@@ -372,7 +460,7 @@ export default function LoginPage() {
             {/* Sign Up Link */}
             <button
               type="button"
-              className="flex items-center justify-center w-full gap-2 px-4 py-3 font-bold text-indigo-600 transition-all duration-300 border-2 border-indigo-600 rounded-lg hover:bg-indigo-600 hover:text-white hover:shadow-lg"
+              className="flex items-center justify-center w-full gap-2 px-4 py-3 font-bold text-purple-600 transition-all duration-300 border-2 border-purple-600 rounded-lg hover:bg-purple-600 hover:text-white hover:shadow-lg"
             >
               <span>Create an Account</span>
               <Sparkles className="w-4 h-4" />

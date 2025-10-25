@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from 'next'
 import { Inter, Space_Grotesk } from 'next/font/google'
+import AuthProvider from '@/components/AuthProvider'
 import './globals.css'
 
 const inter = Inter({ 
@@ -38,7 +39,8 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable}`}>
       <body className={`${inter.className} antialiased`}>
-        <div className="min-h-screen bg-modern-gradient dark:bg-dark-gradient relative overflow-hidden">
+        <AuthProvider>
+          <div className="min-h-screen bg-modern-gradient dark:bg-dark-gradient relative overflow-hidden">
           {/* Subtle grid pattern */}
           <div className="absolute inset-0 opacity-[0.03] dark:opacity-[0.05]" 
                style={{
@@ -54,6 +56,7 @@ export default function RootLayout({
             {children}
           </main>
         </div>
+        </AuthProvider>
       </body>
     </html>
   )
