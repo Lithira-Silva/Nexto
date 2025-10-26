@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { sendPasswordResetEmail } from '../../../../lib/email-resend'
+import { sendPasswordResetEmail } from '../../../../lib/email-fast'
 
 // In a real application, you would:
 // 1. Verify the email exists in your database
