@@ -169,58 +169,72 @@ export default function Dashboard() {
       {/* Main Content Area */}
       <div className="flex-1 flex flex-col overflow-hidden">
         
-        {/* Header - Only show for tasks tab */}
-        {activeTab === 'tasks' && (
+        {/* Header - Show for both add and tasks tabs with different content */}
+        {(activeTab === 'add' || activeTab === 'tasks') && (
           <header className="flex-shrink-0 bg-white/80 dark:bg-secondary-900/80 backdrop-blur-xl border-b border-white/20 dark:border-secondary-700/30 shadow-lg">
             <div className="px-4 py-4">
               <div className="mx-auto max-w-none">
-                <div className="flex items-center justify-between">
-                  
-                  {/* User Info - Left */}
+                {activeTab === 'add' ? (
+                  /* Welcome Header for Add Tab */
                   <div className="flex items-center gap-3">
                     <div className="glass-morphism rounded-xl p-3 border border-white/20 dark:border-secondary-700/30">
                       <User className="w-6 h-6 text-midnight-blue dark:text-accent-400" />
                     </div>
                     <div>
-                      <h1 className="text-xl font-bold gradient-text">Welcome, {user?.name}!</h1>
-                      <p className="text-sm text-slate-gray dark:text-cloud-gray">{user?.email}</p>
+                      <h1 className="text-xl font-bold gradient-text">Welcome back, {user?.name}!</h1>
+                      <p className="text-sm text-slate-gray dark:text-cloud-gray">Ready to tackle your goals? Let&apos;s create a new task.</p>
                     </div>
                   </div>
+                ) : (
+                  /* Tasks Tab Header with view controls */
+                  <div className="flex items-center justify-between">
+                    
+                    {/* User Info - Left */}
+                    <div className="flex items-center gap-3">
+                      <div className="glass-morphism rounded-xl p-3 border border-white/20 dark:border-secondary-700/30">
+                        <User className="w-6 h-6 text-midnight-blue dark:text-accent-400" />
+                      </div>
+                      <div>
+                        <h1 className="text-xl font-bold gradient-text">Welcome, {user?.name}!</h1>
+                        <p className="text-sm text-slate-gray dark:text-cloud-gray">{user?.email}</p>
+                      </div>
+                    </div>
 
-                  {/* Navigation Controls - Right */}
-                  <div className="flex items-center gap-3">
-                    {/* View Mode Toggle */}
-                    <div className="flex items-center space-x-1 bg-white/10 dark:bg-secondary-800/30 rounded-xl p-1">
-                      <button
-                        onClick={() => setViewMode('list')}
-                        className={`
-                          flex items-center space-x-2 px-4 py-2 rounded-lg font-medium transition-all duration-300
-                          ${viewMode === 'list'
-                            ? 'bg-midnight-blue dark:bg-accent-500 text-frost-white shadow-lg'
-                            : 'text-slate-gray dark:text-cloud-gray hover:text-midnight-blue dark:hover:text-frost-white hover:bg-white/20 dark:hover:bg-secondary-700/30'
-                          }
-                        `}
-                      >
-                        <List className="w-4 h-4" />
-                        <span className="text-sm font-semibold">List</span>
-                      </button>
-                      
-                      <button
-                        onClick={() => setViewMode('calendar')}
-                        className={`
-                          flex items-center space-x-2 px-4 py-2 rounded-lg font-medium transition-all duration-300
-                          ${viewMode === 'calendar'
-                            ? 'bg-midnight-blue dark:bg-accent-500 text-frost-white shadow-lg'
-                            : 'text-slate-gray dark:text-cloud-gray hover:text-midnight-blue dark:hover:text-frost-white hover:bg-white/20 dark:hover:bg-secondary-700/30'
-                          }
-                        `}
-                      >
-                        <Calendar className="w-4 h-4" />
-                        <span className="text-sm font-semibold">Calendar</span>
-                      </button>
+                    {/* Navigation Controls - Right */}
+                    <div className="flex items-center gap-3">
+                      {/* View Mode Toggle */}
+                      <div className="flex items-center space-x-1 bg-white/10 dark:bg-secondary-800/30 rounded-xl p-1">
+                        <button
+                          onClick={() => setViewMode('list')}
+                          className={`
+                            flex items-center space-x-2 px-4 py-2 rounded-lg font-medium transition-all duration-300
+                            ${viewMode === 'list'
+                              ? 'bg-midnight-blue dark:bg-accent-500 text-frost-white shadow-lg'
+                              : 'text-slate-gray dark:text-cloud-gray hover:text-midnight-blue dark:hover:text-frost-white hover:bg-white/20 dark:hover:bg-secondary-700/30'
+                            }
+                          `}
+                        >
+                          <List className="w-4 h-4" />
+                          <span className="text-sm font-semibold">List</span>
+                        </button>
+                        
+                        <button
+                          onClick={() => setViewMode('calendar')}
+                          className={`
+                            flex items-center space-x-2 px-4 py-2 rounded-lg font-medium transition-all duration-300
+                            ${viewMode === 'calendar'
+                              ? 'bg-midnight-blue dark:bg-accent-500 text-frost-white shadow-lg'
+                              : 'text-slate-gray dark:text-cloud-gray hover:text-midnight-blue dark:hover:text-frost-white hover:bg-white/20 dark:hover:bg-secondary-700/30'
+                            }
+                          `}
+                        >
+                          <Calendar className="w-4 h-4" />
+                          <span className="text-sm font-semibold">Calendar</span>
+                        </button>
+                      </div>
                     </div>
                   </div>
-                </div>
+                )}
               </div>
             </div>
           </header>
